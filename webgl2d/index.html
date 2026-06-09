@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <title>WebGL 2D — зум, drag-n-drop, текст</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <canvas id="view"></canvas>
+
+    <aside id="hud" class="panel">
+      <h1>WebGL&nbsp;2D</h1>
+      <p class="muted">Своя мини-библиотека рендеринга на WebGL2</p>
+      <ul class="hint">
+        <li><b>Колесо мыши</b> — зум к курсору</li>
+        <li><b>Тащить фон</b> — панорама</li>
+        <li><b>Тащить объект</b> — переместить (drag-n-drop)</li>
+        <li><b>R</b> — сбросить вид</li>
+      </ul>
+      <div class="stats">
+        <div><span>FPS</span><b id="st-fps">—</b></div>
+        <div><span>Объектов</span><b id="st-obj">—</b></div>
+        <div><span>Глифов</span><b id="st-glyph">—</b></div>
+        <div><span>Зум</span><b id="st-zoom">—</b></div>
+      </div>
+    </aside>
+
+    <div id="loading">Готовим SDF-атлас шрифта и сцену…</div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
