@@ -3,6 +3,7 @@ import { ArrowUpRight, Sparkles } from 'lucide-react'
 import { ButtonLink } from '@/components/ui/Button'
 import { company } from '@/data/site'
 import { EASE } from '@/lib/motion'
+import { asset } from '@/lib/asset'
 
 const word = {
   hidden: { opacity: 0, y: '0.6em' },
@@ -130,7 +131,7 @@ function HeroVisual() {
         {/* Главный кадр — генплан микрорайона */}
         <figure className="overflow-hidden rounded-[2.25rem] border border-line bg-elev p-2 shadow-[0_40px_90px_-40px_rgba(70,40,20,0.45)] glow-brand">
           <img
-            src="/img/complex-aerial.jpg"
+            src={asset('/img/complex-aerial.jpg')}
             alt="Микрорайон «Новая Жизнь» — вид сверху на кварталы у воды"
             className="aspect-[5/4] w-full rounded-[1.7rem] object-cover"
             loading="eager"
@@ -144,7 +145,7 @@ function HeroVisual() {
           className="absolute -bottom-8 -left-6 hidden w-40 overflow-hidden rounded-2xl border border-line bg-elev p-1.5 shadow-[0_24px_60px_-30px_rgba(70,40,20,0.5)] sm:block"
         >
           <img
-            src="/img/facade-terracotta.jpg"
+            src={asset('/img/facade-terracotta.jpg')}
             alt="Терракотовый фасад дома «Новой Жизни»"
             className="aspect-square w-full rounded-xl object-cover"
             loading="lazy"

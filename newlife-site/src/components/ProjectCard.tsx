@@ -3,6 +3,7 @@ import { ArrowUpRight, Check } from 'lucide-react'
 import { TiltCard } from './ui/TiltCard'
 import type { Project } from '@/data/site'
 import { cn } from '@/lib/cn'
+import { asset } from '@/lib/asset'
 
 const accentMap = {
   brand: { text: 'text-brand', ring: 'group-hover:border-brand/50', glow: 'var(--color-brand)' },
@@ -22,7 +23,7 @@ export function ProjectCard({ project }: { project: Project }) {
         )}
       >
         {/* Реальный фасад проекта */}
-        <ProjectPhoto src={project.image} alt={project.name} glow={a.glow} />
+        <ProjectPhoto src={asset(project.image)} alt={project.name} glow={a.glow} />
 
         <div className="relative flex items-center justify-between">
           <span className="rounded-full border border-line2 bg-base/60 px-3 py-1 text-xs font-semibold text-muted">
