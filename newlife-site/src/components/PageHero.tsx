@@ -3,8 +3,17 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ChevronRight } from 'lucide-react'
 import { EASE } from '@/lib/motion'
+import { cn } from '@/lib/cn'
 
 type Crumb = { label: string; to?: string }
+type Accent = 'brand' | 'sky' | 'lime' | 'brick'
+
+const accentMap: Record<Accent, { text: string; dot: string; glow: string }> = {
+  brand: { text: 'text-brand', dot: 'bg-brand', glow: 'bg-brand/15' },
+  sky: { text: 'text-sky', dot: 'bg-sky', glow: 'bg-sky/15' },
+  lime: { text: 'text-lime', dot: 'bg-lime', glow: 'bg-lime/15' },
+  brick: { text: 'text-brick', dot: 'bg-brick', glow: 'bg-brick/20' },
+}
 
 export function PageHero({
   eyebrow,
@@ -12,18 +21,21 @@ export function PageHero({
   description,
   crumbs = [],
   children,
+  accent = 'brand',
 }: {
   eyebrow?: string
   title: ReactNode
   description?: string
   crumbs?: Crumb[]
   children?: ReactNode
+  accent?: Accent
 }) {
+  const a = accentMap[accent]
   return (
     <section className="relative overflow-hidden pt-32 pb-12 md:pt-40 md:pb-16">
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-grid opacity-30 mask-fade-b" />
-        <div className="absolute left-1/2 top-0 size-[480px] -translate-x-1/2 rounded-full bg-brand/15 blur-[120px]" />
+        <div className={cn('absolute left-1/2 top-0 size-[480px] -translate-x-1/2 rounded-full blur-[120px]', a.glow)} />
       </div>
 
       <div className="container-x">
@@ -49,9 +61,12 @@ export function PageHero({
           <motion.span
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mt-6 inline-flex items-center gap-2 rounded-full border border-line2 bg-elev/60 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-brand"
+            className={cn(
+              'mt-6 inline-flex items-center gap-2 rounded-full border border-line2 bg-elev/60 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em]',
+              a.text,
+            )}
           >
-            <span className="size-1.5 rounded-full bg-brand" />
+            <span className={cn('size-1.5 rounded-full', a.dot)} />
             {eyebrow}
           </motion.span>
         )}

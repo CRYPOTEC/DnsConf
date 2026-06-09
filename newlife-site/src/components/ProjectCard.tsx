@@ -9,6 +9,7 @@ const accentMap = {
   brand: { text: 'text-brand', ring: 'group-hover:border-brand/50', glow: 'var(--color-brand)' },
   sky: { text: 'text-sky', ring: 'group-hover:border-sky/50', glow: 'var(--color-sky)' },
   lime: { text: 'text-lime', ring: 'group-hover:border-lime/50', glow: 'var(--color-lime)' },
+  brick: { text: 'text-brick', ring: 'group-hover:border-brick/50', glow: 'var(--color-brick)' },
 }
 
 export function ProjectCard({ project }: { project: Project }) {

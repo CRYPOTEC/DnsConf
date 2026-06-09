@@ -41,7 +41,7 @@ export type Project = {
   tagline: string
   description: string
   highlights: string[]
-  accent: 'brand' | 'sky' | 'lime'
+  accent: 'brand' | 'sky' | 'lime' | 'brick'
   image: string
   hero: string
   shots: ProjectShot[]
@@ -102,20 +102,20 @@ export const projects: Project[] = [
       'Коммерция и сервисы на первых этажах',
       'Видовые квартиры с увеличенным остеклением',
     ],
-    accent: 'sky',
+    accent: 'brick',
     image: '/img/render-naganova.jpg',
-    hero: '/img/render-naganova.jpg',
+    hero: '/img/nag-cluster.jpg',
     shots: [
-      { src: '/img/render-naganova.jpg', title: 'Архитектурный облик', tag: 'Рендер' },
-      { src: '/img/plans/genplan-naganova.jpg', title: 'Генплан квартала', tag: 'Генплан' },
-      { src: '/img/playground-slide.jpg', title: 'Детские площадки', tag: 'Двор' },
-      { src: '/img/yard-benches.jpg', title: 'Зоны отдыха', tag: 'Благоустройство' },
-      { src: '/img/greenery-autumn.jpg', title: 'Озеленение двора', tag: 'Озеленение' },
-      { src: '/img/towers-yellow.jpg', title: 'Высотные корпуса', tag: 'Дома' },
-      { src: '/img/facade-stripes.jpg', title: 'Цветные фасады', tag: 'Дома' },
-      { src: '/img/facade-balconies.jpg', title: 'Видовые квартиры', tag: 'Дома' },
-      { src: '/img/tower-tree.jpg', title: 'Корпуса в зелени', tag: 'Озеленение' },
-      { src: '/img/street-cars.jpg', title: 'Двор и паркинг', tag: 'Двор' },
+      { src: '/img/render-nag-aerial.jpg', title: 'Вечерний вид квартала', tag: 'Рендер' },
+      { src: '/img/nag-render-day.jpg', title: 'Архитектура кварталов', tag: 'Рендер' },
+      { src: '/img/nag-street.jpg', title: 'Вечерние улицы', tag: 'Рендер' },
+      { src: '/img/nag-aerial-day.jpg', title: 'Генплан квартала', tag: 'Генплан' },
+      { src: '/img/nag-lowrise.jpg', title: 'Дворовые корпуса и среда', tag: 'Благоустройство' },
+      { src: '/img/nag-green.jpg', title: 'Озеленение двора', tag: 'Озеленение' },
+      { src: '/img/nag-tower.jpg', title: 'Видовые башни', tag: 'Дома' },
+      { src: '/img/nag-playground.jpg', title: 'Детские площадки', tag: 'Двор' },
+      { src: '/img/nag-construction.jpg', title: 'Ход строительства', tag: 'Ход строительства' },
+      { src: '/img/nag-moving.jpg', title: 'Новоселье в квартале', tag: 'Новоселье' },
     ],
     badges: [
       { label: 'Старт', value: 'продаж' },
@@ -254,7 +254,7 @@ export type GalleryShot = { src: string; title: string; cat: GalleryCat; wide?: 
 
 /** Реальные фотографии и рендеры микрорайонов «Новая Жизнь» и «Новая Наганова». */
 export const gallery: GalleryShot[] = [
-  { src: '/img/render-naganova.jpg', title: 'Вечерний рендер «Новой Нагановой»', cat: 'Дома' },
+  { src: '/img/towers-twin.jpg', title: 'Высотные корпуса', cat: 'Дома' },
   { src: '/img/towers-terracotta.jpg', title: 'Терракотовые кварталы', cat: 'Дома' },
   { src: '/img/facade-orange.jpg', title: 'Тёплые фасады', cat: 'Дома' },
   { src: '/img/towers-yellow.jpg', title: 'Высотные корпуса', cat: 'Дома' },

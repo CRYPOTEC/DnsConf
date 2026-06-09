@@ -12,6 +12,7 @@ const accentCls: Record<Project['accent'], { text: string; soft: string; ring: s
   brand: { text: 'text-brand', soft: 'bg-brand/10', ring: 'hover:border-brand/50', glow: 'var(--color-brand)' },
   sky: { text: 'text-sky', soft: 'bg-sky/10', ring: 'hover:border-sky/50', glow: 'var(--color-sky)' },
   lime: { text: 'text-lime', soft: 'bg-lime/10', ring: 'hover:border-lime/50', glow: 'var(--color-lime)' },
+  brick: { text: 'text-brick', soft: 'bg-brick/10', ring: 'hover:border-brick/50', glow: 'var(--color-brick)' },
 }
 
 // Цвет ярлыка по типу кадра: дома — терракота, двор/озеленение — зелёный,
@@ -24,7 +25,9 @@ const tagColor: Record<string, string> = {
   'Микрорайон': 'text-sky',
   'Рендер': 'text-sky',
   'Генплан': 'text-sky',
+  'Ход строительства': 'text-sky',
   'Внутри': 'text-clay',
+  'Новоселье': 'text-clay',
 }
 
 export function ProjectPage({ project }: { project: Project }) {
@@ -37,6 +40,7 @@ export function ProjectPage({ project }: { project: Project }) {
         title={project.name}
         description={project.description}
         crumbs={[{ label: project.name }]}
+        accent={project.accent}
       >
         <div className="flex flex-wrap items-center gap-4">
           <ButtonLink to="/apartments">Выбрать квартиру</ButtonLink>
