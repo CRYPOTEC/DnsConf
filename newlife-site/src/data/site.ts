@@ -61,7 +61,7 @@ export const projects: Project[] = [
       'Благоустроенные парки и зоны отдыха',
     ],
     accent: 'brand',
-    image: '/img/facade-terracotta.jpg',
+    image: '/img/towers-terracotta.jpg',
     badges: [
       { label: 'Скидка', value: 'до 15%' },
       { label: 'Очередь', value: '2-я' },
@@ -84,7 +84,7 @@ export const projects: Project[] = [
       'Видовые квартиры с увеличенным остеклением',
     ],
     accent: 'sky',
-    image: '/img/facade-detail.jpg',
+    image: '/img/render-naganova.jpg',
     badges: [
       { label: 'Старт', value: 'продаж' },
       { label: 'Ипотека', value: 'от 6%' },
@@ -215,4 +215,29 @@ export const galleryItems = [
   { title: 'Входные группы', hue: 205 },
   { title: 'Видовые квартиры', hue: 175 },
   { title: 'Парк и озеленение', hue: 130 },
+]
+
+export type GalleryCat = 'Дома' | 'Микрорайон' | 'Двор и среда' | 'Внутри'
+export type GalleryShot = { src: string; title: string; cat: GalleryCat; wide?: boolean }
+
+/** Реальные фотографии и рендеры микрорайонов «Новая Жизнь» и «Новая Наганова». */
+export const gallery: GalleryShot[] = [
+  { src: '/img/render-naganova.jpg', title: 'Вечерний рендер «Новой Нагановой»', cat: 'Дома' },
+  { src: '/img/towers-terracotta.jpg', title: 'Терракотовые кварталы', cat: 'Дома' },
+  { src: '/img/facade-orange.jpg', title: 'Тёплые фасады', cat: 'Дома' },
+  { src: '/img/towers-yellow.jpg', title: 'Высотные корпуса', cat: 'Дома' },
+  { src: '/img/facade-num8.jpg', title: 'Дом №8', cat: 'Дома' },
+  { src: '/img/facade-balconies.jpg', title: 'Остеклённые балконы', cat: 'Дома' },
+  { src: '/img/medallion-sun.jpg', title: 'Фирменные медальоны домов', cat: 'Дома' },
+  { src: '/img/facade-stripes.jpg', title: 'Цветные акценты фасадов', cat: 'Дома' },
+  { src: '/img/aerial-summer.jpg', title: 'Микрорайон с высоты', cat: 'Микрорайон', wide: true },
+  { src: '/img/complex-aerial.jpg', title: 'Генплан проекта', cat: 'Микрорайон', wide: true },
+  { src: '/img/street-towers.jpg', title: 'Улицы и кварталы', cat: 'Микрорайон' },
+  { src: '/img/towers-cluster.jpg', title: 'Панорама микрорайона', cat: 'Микрорайон' },
+  { src: '/img/yard-playground.jpg', title: 'Двор и детские площадки', cat: 'Двор и среда' },
+  { src: '/img/tower-tree.jpg', title: 'Корпуса в зелени', cat: 'Двор и среда' },
+  { src: '/img/facade-closeup.jpg', title: 'Осень в «Новой Жизни»', cat: 'Двор и среда' },
+  { src: '/img/tower-autumn.jpg', title: 'Дворы без машин', cat: 'Двор и среда' },
+  { src: '/img/lobby-interior.jpg', title: 'Светлые входные группы', cat: 'Внутри' },
+  { src: '/img/sign-newlife.jpg', title: 'Офис продаж «Новая Жизнь»', cat: 'Внутри' },
 ]
