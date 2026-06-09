@@ -26,7 +26,7 @@ export function LeadForm({ compact = false }: Props) {
             animate={{ opacity: 1, scale: 1 }}
             className="flex flex-col items-center gap-3 rounded-2xl border border-brand/40 bg-brand/5 px-6 py-10 text-center"
           >
-            <span className="grid size-12 place-items-center rounded-full bg-brand text-ink">
+            <span className="grid size-12 place-items-center rounded-full bg-brand text-on-brand">
               <Check className="size-6" />
             </span>
             <p className="font-display text-xl">Заявка отправлена</p>

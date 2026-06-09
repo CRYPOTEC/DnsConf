@@ -62,7 +62,7 @@ export function Apartments() {
               className={cn(
                 'rounded-full border px-4 py-2 text-sm font-semibold transition-all duration-300',
                 active === f.value
-                  ? 'border-brand bg-brand text-ink'
+                  ? 'border-brand bg-brand text-on-brand'
                   : 'border-line2 bg-elev/50 text-muted hover:text-fg',
               )}
             >

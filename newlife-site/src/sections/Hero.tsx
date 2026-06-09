@@ -110,91 +110,60 @@ export function Hero() {
   )
 }
 
-/** Парящий изометрический «дом» с орбитами и бликами. */
+/** Витрина с реальным видом микрорайона и фрагментом фасада. */
 function HeroVisual() {
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.9 }}
+      initial={{ opacity: 0, scale: 0.96 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ delay: 0.3, duration: 1, ease: EASE }}
-      className="relative mx-auto aspect-square w-full max-w-md"
+      className="relative mx-auto w-full max-w-xl"
     >
       <motion.div
-        animate={{ y: [0, -16, 0] }}
-        transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-        className="relative size-full"
+        animate={{ y: [0, -12, 0] }}
+        transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
+        className="relative"
       >
-        {/* Орбитальные кольца */}
-        <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
-          className="absolute inset-0 rounded-full border border-line2/60"
-        />
-        <motion.div
-          animate={{ rotate: -360 }}
-          transition={{ duration: 28, repeat: Infinity, ease: 'linear' }}
-          className="absolute inset-8 rounded-full border border-dashed border-line2/40"
-        />
+        {/* Тёплая подсветка под карточкой */}
+        <div className="absolute -inset-6 -z-10 rounded-[3rem] bg-[radial-gradient(60%_60%_at_60%_30%,color-mix(in_srgb,var(--color-brand)_22%,transparent),transparent_70%)]" />
 
-        {/* Стеклянная подложка */}
-        <div className="absolute inset-10 rounded-[2.5rem] glass glow-brand" />
+        {/* Главный кадр — генплан микрорайона */}
+        <figure className="overflow-hidden rounded-[2.25rem] border border-line bg-elev p-2 shadow-[0_40px_90px_-40px_rgba(70,40,20,0.45)] glow-brand">
+          <img
+            src="/img/complex-aerial.jpg"
+            alt="Микрорайон «Новая Жизнь» — вид сверху на кварталы у воды"
+            className="aspect-[5/4] w-full rounded-[1.7rem] object-cover"
+            loading="eager"
+          />
+        </figure>
 
-        {/* SVG-здания */}
-        <svg
-          viewBox="0 0 200 200"
-          className="absolute inset-0 size-full drop-shadow-[0_30px_60px_rgba(0,0,0,0.5)]"
+        {/* Парящий фрагмент фасада */}
+        <motion.figure
+          animate={{ y: [0, 12, 0] }}
+          transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 0.6 }}
+          className="absolute -bottom-8 -left-6 hidden w-40 overflow-hidden rounded-2xl border border-line bg-elev p-1.5 shadow-[0_24px_60px_-30px_rgba(70,40,20,0.5)] sm:block"
         >
-          <defs>
-            <linearGradient id="b1" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#1a2530" />
-              <stop offset="100%" stopColor="#0e151c" />
-            </linearGradient>
-            <linearGradient id="b2" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#2fe0a6" />
-              <stop offset="100%" stopColor="#1aa37a" />
-            </linearGradient>
-          </defs>
-          {/* задние корпуса */}
-          <rect x="58" y="74" width="34" height="86" rx="5" fill="url(#b1)" />
-          <rect x="116" y="64" width="30" height="96" rx="5" fill="url(#b1)" />
-          {/* центральный акцентный корпус */}
-          <rect x="86" y="52" width="34" height="108" rx="6" fill="url(#b2)" />
-          {/* окна (мерцают) */}
-          {Array.from({ length: 6 }).map((_, r) =>
-            Array.from({ length: 2 }).map((__, c) => (
-              <motion.rect
-                key={`${r}-${c}`}
-                x={92 + c * 13}
-                y={62 + r * 15}
-                width="8"
-                height="9"
-                rx="1.5"
-                fill="#06181a"
-                animate={{ opacity: [0.35, 1, 0.35] }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  delay: (r + c) * 0.4,
-                  ease: 'easeInOut',
-                }}
-              />
-            )),
-          )}
-        </svg>
+          <img
+            src="/img/facade-terracotta.jpg"
+            alt="Терракотовый фасад дома «Новой Жизни»"
+            className="aspect-square w-full rounded-xl object-cover"
+            loading="lazy"
+          />
+        </motion.figure>
 
-        {/* Парящая инфо-метка */}
+        {/* Чип со статистикой */}
         <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute -right-2 top-6 glass rounded-2xl px-4 py-3"
+          animate={{ y: [0, -10, 0] }}
+          transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut' }}
+          className="absolute -right-3 top-8 glass rounded-2xl px-4 py-3 shadow-[0_18px_50px_-24px_rgba(70,40,20,0.45)]"
         >
           <p className="text-xs text-muted">Построено</p>
           <p className="font-display text-lg text-brand">1,5 млн м²</p>
         </motion.div>
         <motion.div
-          animate={{ y: [0, -12, 0] }}
-          transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
-          className="absolute -left-3 bottom-10 glass rounded-2xl px-4 py-3"
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 6.5, repeat: Infinity, ease: 'easeInOut', delay: 0.4 }}
+          className="absolute right-6 -bottom-6 glass rounded-2xl px-4 py-3 shadow-[0_18px_50px_-24px_rgba(70,40,20,0.45)]"
         >
           <p className="text-xs text-muted">Опыт</p>
           <p className="font-display text-lg">18+ лет</p>

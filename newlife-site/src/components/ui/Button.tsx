@@ -6,13 +6,13 @@ import { Magnetic } from './Magnetic'
 type Variant = 'primary' | 'ghost' | 'outline'
 
 const base =
-  'group relative inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold tracking-tight transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand/60'
+  'group relative inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold tracking-tight transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand/50 focus-visible:ring-offset-2 focus-visible:ring-offset-base'
 
 const styles: Record<Variant, string> = {
   primary:
-    'bg-brand text-ink shadow-[0_10px_40px_-12px_var(--color-brand)] hover:bg-brand-2',
+    'bg-brand text-on-brand shadow-[0_14px_40px_-16px_var(--color-brand)] hover:bg-brand-2',
   outline:
-    'border border-line2 text-fg hover:border-brand hover:text-brand bg-elev/40',
+    'border border-line2 text-fg hover:border-brand hover:text-brand bg-elev/60',
   ghost: 'text-fg hover:text-brand',
 }
 

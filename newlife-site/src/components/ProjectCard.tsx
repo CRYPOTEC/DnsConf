@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
 import { ArrowUpRight, Check } from 'lucide-react'
 import { TiltCard } from './ui/TiltCard'
 import type { Project } from '@/data/site'
@@ -22,8 +21,8 @@ export function ProjectCard({ project }: { project: Project }) {
           a.ring,
         )}
       >
-        {/* Декоративный визуал проекта */}
-        <ProjectArt glow={a.glow} />
+        {/* Реальный фасад проекта */}
+        <ProjectPhoto src={project.image} alt={project.name} glow={a.glow} />
 
         <div className="relative flex items-center justify-between">
           <span className="rounded-full border border-line2 bg-base/60 px-3 py-1 text-xs font-semibold text-muted">
@@ -71,36 +70,34 @@ export function ProjectCard({ project }: { project: Project }) {
   )
 }
 
-function ProjectArt({ glow }: { glow: string }) {
+function ProjectPhoto({
+  src,
+  alt,
+  glow,
+}: {
+  src: string
+  alt: string
+  glow: string
+}) {
   return (
-    <div className="pointer-events-none absolute right-0 top-0 h-44 w-full overflow-hidden rounded-t-3xl">
+    <div className="pointer-events-none absolute inset-x-0 top-0 h-48 overflow-hidden rounded-t-3xl">
+      <img
+        src={src}
+        alt={alt}
+        className="size-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
+        loading="lazy"
+      />
+      {/* затемнение сверху для читаемости чипов */}
+      <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-black/25 to-transparent" />
+      {/* мягкое растворение фото в карточке снизу */}
+      <div className="absolute inset-0 bg-gradient-to-t from-elev via-elev/35 to-transparent" />
+      {/* акцентное свечение проекта */}
       <div
         className="absolute -right-10 -top-16 size-52 rounded-full blur-3xl"
-        style={{ background: `radial-gradient(circle, color-mix(in srgb, ${glow} 40%, transparent), transparent 70%)` }}
+        style={{
+          background: `radial-gradient(circle, color-mix(in srgb, ${glow} 35%, transparent), transparent 70%)`,
+        }}
       />
-      <svg viewBox="0 0 300 120" className="absolute bottom-0 left-0 w-full opacity-60">
-        <motion.g
-          initial={{ y: 20, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 0.6 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
-          {[20, 70, 120, 180, 240].map((x, i) => (
-            <rect
-              key={x}
-              x={x}
-              y={40 + (i % 3) * 14}
-              width="42"
-              height={80 - (i % 3) * 14}
-              rx="4"
-              fill="none"
-              stroke={glow}
-              strokeOpacity="0.45"
-              strokeWidth="1.5"
-            />
-          ))}
-        </motion.g>
-      </svg>
     </div>
   )
 }

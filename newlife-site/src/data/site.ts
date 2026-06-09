@@ -2,7 +2,7 @@
 // Данные структурированы по реальному оригиналу newlife-ul.ru.
 
 export const company = {
-  name: 'Новая',
+  name: 'Новая Жизнь',
   tagline: 'Пространства, где хочется жить',
   phone: '8 927 830 16 03',
   phoneHref: 'tel:+79278301603',
@@ -40,6 +40,7 @@ export type Project = {
   description: string
   highlights: string[]
   accent: 'brand' | 'sky' | 'lime'
+  image: string
   badges: { label: string; value: string }[]
 }
 
@@ -60,6 +61,7 @@ export const projects: Project[] = [
       'Благоустроенные парки и зоны отдыха',
     ],
     accent: 'brand',
+    image: '/img/facade-terracotta.jpg',
     badges: [
       { label: 'Скидка', value: 'до 15%' },
       { label: 'Очередь', value: '2-я' },
@@ -82,6 +84,7 @@ export const projects: Project[] = [
       'Видовые квартиры с увеличенным остеклением',
     ],
     accent: 'sky',
+    image: '/img/facade-detail.jpg',
     badges: [
       { label: 'Старт', value: 'продаж' },
       { label: 'Ипотека', value: 'от 6%' },

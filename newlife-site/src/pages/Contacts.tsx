@@ -72,7 +72,7 @@ export function Contacts() {
               <div className="flex flex-col items-center gap-3 text-center">
                 <span className="relative grid size-14 place-items-center">
                   <span className="absolute inset-0 animate-ping rounded-full bg-brand/30" />
-                  <span className="relative grid size-11 place-items-center rounded-full bg-brand text-ink">
+                  <span className="relative grid size-11 place-items-center rounded-full bg-brand text-on-brand">
                     <MapPin className="size-6" />
                   </span>
                 </span>

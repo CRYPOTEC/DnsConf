@@ -28,14 +28,14 @@ export function Navbar() {
           className={cn(
             'mt-3 flex items-center justify-between rounded-2xl px-4 py-2.5 transition-all duration-500',
             scrolled
-              ? 'glass shadow-[0_8px_40px_-12px_rgba(0,0,0,0.6)]'
+              ? 'glass shadow-[0_12px_44px_-20px_rgba(46,32,20,0.35)]'
               : 'border border-transparent',
           )}
         >
           <Link to="/" className="flex items-center gap-2.5" aria-label="Новая">
             <Logo />
             <span className="font-display text-lg font-bold tracking-tight">
-              Новая
+              {company.name}
             </span>
           </Link>
 
@@ -151,7 +151,7 @@ export function Logo({ className }: { className?: string }) {
   return (
     <span
       className={cn(
-        'grid size-9 place-items-center rounded-xl bg-gradient-to-br from-brand to-brand-2 text-ink',
+        'grid size-9 place-items-center rounded-xl bg-gradient-to-br from-brand to-brand-2 text-on-brand shadow-[0_8px_24px_-10px_var(--color-brand)]',
         className,
       )}
     >
