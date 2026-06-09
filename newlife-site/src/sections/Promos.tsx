@@ -4,6 +4,15 @@ import { SectionHeading } from '@/components/ui/SectionHeading'
 import { Marquee } from '@/components/ui/Marquee'
 import { Reveal, RevealItem } from '@/components/ui/Reveal'
 import { promos } from '@/data/site'
+import { cn } from '@/lib/cn'
+
+// Разные цвета акций для разнообразия палитры.
+const promoColors = [
+  { tag: 'bg-sky/12 text-sky', link: 'text-sky', border: 'hover:border-sky/50' },
+  { tag: 'bg-lime/15 text-lime', link: 'text-lime', border: 'hover:border-lime/50' },
+  { tag: 'bg-brand/10 text-brand', link: 'text-brand', border: 'hover:border-brand/50' },
+  { tag: 'bg-clay/12 text-clay', link: 'text-clay', border: 'hover:border-clay/50' },
+]
 
 const ticker = [
   'Семейная ипотека от 6%',
@@ -39,28 +48,34 @@ export function Promos() {
 
       <div className="container-x">
         <Reveal stagger className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {promos.map((promo) => (
-            <RevealItem key={promo.title}>
-              <Link
-                to={promo.to}
-                className="group flex h-full flex-col rounded-3xl border border-line bg-elev p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand/50 hover:bg-elev2"
-              >
-                <span className="w-fit rounded-full bg-brand/10 px-3 py-1 text-xs font-bold uppercase tracking-wide text-brand">
-                  {promo.tag}
-                </span>
-                <h3 className="mt-5 font-display text-xl leading-tight">
-                  {promo.title}
-                </h3>
-                <p className="mt-3 flex-1 text-sm leading-relaxed text-muted">
-                  {promo.text}
-                </p>
-                <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-brand">
-                  Подробнее
-                  <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </span>
-              </Link>
-            </RevealItem>
-          ))}
+          {promos.map((promo, i) => {
+            const c = promoColors[i % promoColors.length]
+            return (
+              <RevealItem key={promo.title}>
+                <Link
+                  to={promo.to}
+                  className={cn(
+                    'group flex h-full flex-col rounded-3xl border border-line bg-elev p-6 transition-all duration-300 hover:-translate-y-1 hover:bg-elev2',
+                    c.border,
+                  )}
+                >
+                  <span className={cn('w-fit rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wide', c.tag)}>
+                    {promo.tag}
+                  </span>
+                  <h3 className="mt-5 font-display text-xl leading-tight">
+                    {promo.title}
+                  </h3>
+                  <p className="mt-3 flex-1 text-sm leading-relaxed text-muted">
+                    {promo.text}
+                  </p>
+                  <span className={cn('mt-6 inline-flex items-center gap-1.5 text-sm font-semibold', c.link)}>
+                    Подробнее
+                    <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </span>
+                </Link>
+              </RevealItem>
+            )
+          })}
         </Reveal>
       </div>
     </section>

@@ -241,3 +241,15 @@ export const gallery: GalleryShot[] = [
   { src: '/img/lobby-interior.jpg', title: 'Светлые входные группы', cat: 'Внутри' },
   { src: '/img/sign-newlife.jpg', title: 'Офис продаж «Новая Жизнь»', cat: 'Внутри' },
 ]
+
+export type FloorPlan = { src: string; rooms: string; area: string }
+
+/** Реальные планировки квартир (с сайта застройщика). */
+export const floorplans: FloorPlan[] = [
+  { src: '/img/plans/plan1.jpg', rooms: 'Студия', area: '27,4 м²' },
+  { src: '/img/plans/plan11.jpg', rooms: '1-комнатная', area: '38,4 м²' },
+  { src: '/img/plans/plan3.jpg', rooms: '1-комнатная', area: '42,1 м²' },
+  { src: '/img/plans/plan8.jpg', rooms: '2-комнатная', area: '54,0 м²' },
+  { src: '/img/plans/plan7.jpg', rooms: '2-комнатная', area: '61,3 м²' },
+  { src: '/img/plans/plan4.jpg', rooms: '3-комнатная', area: '78,5 м²' },
+]

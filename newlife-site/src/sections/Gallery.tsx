@@ -9,6 +9,14 @@ import { EASE } from '@/lib/motion'
 type Filter = 'Все' | GalleryCat
 const cats: Filter[] = ['Все', 'Дома', 'Микрорайон', 'Двор и среда', 'Внутри']
 
+// Цвет ярлыка категории — для разнообразия палитры.
+const catColor: Record<GalleryCat, string> = {
+  'Дома': 'text-brand',
+  'Микрорайон': 'text-sky',
+  'Двор и среда': 'text-lime',
+  'Внутри': 'text-clay',
+}
+
 export function Gallery() {
   const [active, setActive] = useState<Filter>('Все')
   const list = useMemo(
@@ -62,7 +70,7 @@ export function Gallery() {
                 loading="lazy"
                 className="w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
               />
-              <span className="absolute left-3 top-3 rounded-full bg-base/85 px-2.5 py-1 text-[11px] font-semibold text-muted backdrop-blur">
+              <span className={cn('absolute left-3 top-3 rounded-full bg-base/90 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide backdrop-blur', catColor[g.cat])}>
                 {g.cat}
               </span>
               <figcaption className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end p-4 pt-12 bg-gradient-to-t from-ink/85 via-ink/25 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">

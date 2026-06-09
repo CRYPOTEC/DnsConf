@@ -35,8 +35,8 @@ export function MicrodistrictBand() {
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.7, ease: EASE }}
         >
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-brand-2 backdrop-blur">
-            <span className="size-1.5 rounded-full bg-brand-2" />
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#a7c957] backdrop-blur">
+            <span className="size-1.5 rounded-full bg-[#a7c957]" />
             Среда для жизни
           </span>
           <h2 className="mt-5 text-4xl text-[#fdf6ec] sm:text-5xl md:text-6xl">
@@ -57,7 +57,7 @@ export function MicrodistrictBand() {
                   key={p.text}
                   className="flex items-center gap-2 text-sm font-semibold text-[#ece1cf]"
                 >
-                  <Icon className="size-4 text-brand-2" />
+                  <Icon className="size-4 text-[#a7c957]" />
                   {p.text}
                 </li>
               )

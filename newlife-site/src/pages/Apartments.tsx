@@ -5,6 +5,7 @@ import { PageHero } from '@/components/PageHero'
 import { ButtonLink } from '@/components/ui/Button'
 import { cn } from '@/lib/cn'
 import { EASE } from '@/lib/motion'
+import { asset } from '@/lib/asset'
 
 type Flat = {
   id: number
@@ -13,18 +14,19 @@ type Flat = {
   price: number
   project: 'Новая Жизнь' | 'Новая Наганова'
   floor: number
+  plan: string
 }
 
 const flats: Flat[] = [
-  { id: 1, rooms: 1, area: 38.4, price: 4.1, project: 'Новая Жизнь', floor: 4 },
-  { id: 2, rooms: 1, area: 42.1, price: 4.6, project: 'Новая Наганова', floor: 9 },
-  { id: 3, rooms: 2, area: 56.8, price: 6.2, project: 'Новая Жизнь', floor: 7 },
-  { id: 4, rooms: 2, area: 61.3, price: 6.8, project: 'Новая Наганова', floor: 12 },
-  { id: 5, rooms: 3, area: 78.5, price: 8.9, project: 'Новая Жизнь', floor: 5 },
-  { id: 6, rooms: 3, area: 84.2, price: 9.7, project: 'Новая Наганова', floor: 14 },
-  { id: 7, rooms: 1, area: 36.0, price: 3.9, project: 'Новая Наганова', floor: 3 },
-  { id: 8, rooms: 2, area: 54.0, price: 5.9, project: 'Новая Жизнь', floor: 10 },
-  { id: 9, rooms: 4, area: 102.6, price: 12.4, project: 'Новая Наганова', floor: 16 },
+  { id: 1, rooms: 1, area: 38.4, price: 4.1, project: 'Новая Жизнь', floor: 4, plan: '/img/plans/plan11.jpg' },
+  { id: 2, rooms: 1, area: 42.1, price: 4.6, project: 'Новая Наганова', floor: 9, plan: '/img/plans/plan3.jpg' },
+  { id: 3, rooms: 2, area: 56.8, price: 6.2, project: 'Новая Жизнь', floor: 7, plan: '/img/plans/plan8.jpg' },
+  { id: 4, rooms: 2, area: 61.3, price: 6.8, project: 'Новая Наганова', floor: 12, plan: '/img/plans/plan7.jpg' },
+  { id: 5, rooms: 3, area: 78.5, price: 8.9, project: 'Новая Жизнь', floor: 5, plan: '/img/plans/plan4.jpg' },
+  { id: 6, rooms: 3, area: 84.2, price: 9.7, project: 'Новая Наганова', floor: 14, plan: '/img/plans/plan12.jpg' },
+  { id: 7, rooms: 1, area: 36.0, price: 3.9, project: 'Новая Наганова', floor: 3, plan: '/img/plans/plan13.jpg' },
+  { id: 8, rooms: 2, area: 54.0, price: 5.9, project: 'Новая Жизнь', floor: 10, plan: '/img/plans/plan9.jpg' },
+  { id: 9, rooms: 4, area: 102.6, price: 12.4, project: 'Новая Наганова', floor: 16, plan: '/img/plans/plan10.jpg' },
 ]
 
 const filters = [
@@ -83,7 +85,7 @@ export function Apartments() {
                 transition={{ duration: 0.35, ease: EASE }}
                 className="group flex flex-col overflow-hidden rounded-3xl border border-line bg-elev transition-colors duration-300 hover:border-brand/50"
               >
-                <FlatPlan rooms={flat.rooms} />
+                <FlatPlan plan={flat.plan} rooms={flat.rooms} />
                 <div className="flex flex-1 flex-col p-6">
                   <div className="flex items-center justify-between">
                     <span className="rounded-full bg-base px-3 py-1 text-xs font-semibold text-muted">
@@ -121,40 +123,16 @@ export function Apartments() {
   )
 }
 
-/** Схематичная планировка квартиры. */
-function FlatPlan({ rooms }: { rooms: number }) {
+/** Реальная планировка квартиры. */
+function FlatPlan({ plan, rooms }: { plan: string; rooms: number }) {
   return (
-    <div className="relative aspect-[16/10] overflow-hidden border-b border-line bg-gradient-to-br from-elev2 to-base">
-      <div className="absolute inset-0 bg-grid opacity-20" />
-      <svg
-        viewBox="0 0 200 120"
-        className="absolute inset-0 size-full p-6 text-brand"
-      >
-        <rect
-          x="10"
-          y="10"
-          width="180"
-          height="100"
-          rx="4"
-          fill="none"
-          stroke="currentColor"
-          strokeOpacity="0.5"
-          strokeWidth="1.5"
-        />
-        {Array.from({ length: Math.min(rooms + 1, 4) }).map((_, i) => (
-          <rect
-            key={i}
-            x={18 + i * (170 / Math.min(rooms + 1, 4))}
-            y={20}
-            width={150 / Math.min(rooms + 1, 4)}
-            height={80}
-            fill="currentColor"
-            fillOpacity={0.06 + i * 0.03}
-            stroke="currentColor"
-            strokeOpacity="0.35"
-          />
-        ))}
-      </svg>
+    <div className="relative aspect-[16/10] overflow-hidden border-b border-line bg-white p-4">
+      <img
+        src={asset(plan)}
+        alt={`Планировка ${rooms}-комнатной квартиры`}
+        loading="lazy"
+        className="size-full object-contain transition-transform duration-500 group-hover:scale-105"
+      />
     </div>
   )
 }
