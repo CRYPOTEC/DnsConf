@@ -30,6 +30,8 @@ export const stats: Stat[] = [
   { value: 12, suffix: 'k+', label: 'счастливых семей' },
 ]
 
+export type ProjectShot = { src: string; title: string; tag: string }
+
 export type Project = {
   slug: string
   to: string
@@ -41,6 +43,8 @@ export type Project = {
   highlights: string[]
   accent: 'brand' | 'sky' | 'lime'
   image: string
+  hero: string
+  shots: ProjectShot[]
   badges: { label: string; value: string }[]
 }
 
@@ -62,6 +66,21 @@ export const projects: Project[] = [
     ],
     accent: 'brand',
     image: '/img/towers-terracotta.jpg',
+    hero: '/img/towers-terracotta.jpg',
+    shots: [
+      { src: '/img/towers-terracotta.jpg', title: 'Терракотовые кварталы', tag: 'Дома' },
+      { src: '/img/facade-orange.jpg', title: 'Тёплые фасады', tag: 'Дома' },
+      { src: '/img/facade-num8.jpg', title: 'Дом №8', tag: 'Дома' },
+      { src: '/img/yard-playground.jpg', title: 'Детские площадки', tag: 'Двор' },
+      { src: '/img/yard-benches.jpg', title: 'Зоны отдыха и скамейки', tag: 'Благоустройство' },
+      { src: '/img/courtyard-family.jpg', title: 'Двор без машин', tag: 'Двор' },
+      { src: '/img/greenery-autumn.jpg', title: 'Озеленение и деревья', tag: 'Озеленение' },
+      { src: '/img/medallion-sun.jpg', title: 'Фирменные медальоны', tag: 'Дома' },
+      { src: '/img/lobby-interior.jpg', title: 'Светлые входные группы', tag: 'Внутри' },
+      { src: '/img/street-towers.jpg', title: 'Улицы микрорайона', tag: 'Микрорайон' },
+      { src: '/img/towers-cluster.jpg', title: 'Панорама кварталов', tag: 'Микрорайон' },
+      { src: '/img/facade-closeup.jpg', title: 'Осень во дворе', tag: 'Двор' },
+    ],
     badges: [
       { label: 'Скидка', value: 'до 15%' },
       { label: 'Очередь', value: '2-я' },
@@ -85,6 +104,19 @@ export const projects: Project[] = [
     ],
     accent: 'sky',
     image: '/img/render-naganova.jpg',
+    hero: '/img/render-naganova.jpg',
+    shots: [
+      { src: '/img/render-naganova.jpg', title: 'Архитектурный облик', tag: 'Рендер' },
+      { src: '/img/plans/genplan-naganova.jpg', title: 'Генплан квартала', tag: 'Генплан' },
+      { src: '/img/playground-slide.jpg', title: 'Детские площадки', tag: 'Двор' },
+      { src: '/img/yard-benches.jpg', title: 'Зоны отдыха', tag: 'Благоустройство' },
+      { src: '/img/greenery-autumn.jpg', title: 'Озеленение двора', tag: 'Озеленение' },
+      { src: '/img/towers-yellow.jpg', title: 'Высотные корпуса', tag: 'Дома' },
+      { src: '/img/facade-stripes.jpg', title: 'Цветные фасады', tag: 'Дома' },
+      { src: '/img/facade-balconies.jpg', title: 'Видовые квартиры', tag: 'Дома' },
+      { src: '/img/tower-tree.jpg', title: 'Корпуса в зелени', tag: 'Озеленение' },
+      { src: '/img/street-cars.jpg', title: 'Двор и паркинг', tag: 'Двор' },
+    ],
     badges: [
       { label: 'Старт', value: 'продаж' },
       { label: 'Ипотека', value: 'от 6%' },

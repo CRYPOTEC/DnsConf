@@ -4,9 +4,32 @@ import { SectionHeading } from '@/components/ui/SectionHeading'
 import { Reveal, RevealItem } from '@/components/ui/Reveal'
 import { ButtonLink } from '@/components/ui/Button'
 import { LeadForm } from '@/components/LeadForm'
-import { galleryItems, type Project } from '@/data/site'
+import { type Project, type ProjectShot } from '@/data/site'
+import { asset } from '@/lib/asset'
+import { cn } from '@/lib/cn'
+
+const accentCls: Record<Project['accent'], { text: string; soft: string; ring: string; glow: string }> = {
+  brand: { text: 'text-brand', soft: 'bg-brand/10', ring: 'hover:border-brand/50', glow: 'var(--color-brand)' },
+  sky: { text: 'text-sky', soft: 'bg-sky/10', ring: 'hover:border-sky/50', glow: 'var(--color-sky)' },
+  lime: { text: 'text-lime', soft: 'bg-lime/10', ring: 'hover:border-lime/50', glow: 'var(--color-lime)' },
+}
+
+// Цвет ярлыка по типу кадра: дома — терракота, двор/озеленение — зелёный,
+// микрорайон/рендер/генплан — синий, интерьеры — глина.
+const tagColor: Record<string, string> = {
+  'Дома': 'text-brand',
+  'Двор': 'text-lime',
+  'Благоустройство': 'text-lime',
+  'Озеленение': 'text-lime',
+  'Микрорайон': 'text-sky',
+  'Рендер': 'text-sky',
+  'Генплан': 'text-sky',
+  'Внутри': 'text-clay',
+}
 
 export function ProjectPage({ project }: { project: Project }) {
+  const a = accentCls[project.accent]
+
   return (
     <>
       <PageHero
@@ -21,13 +44,30 @@ export function ProjectPage({ project }: { project: Project }) {
             Рассчитать ипотеку
           </ButtonLink>
           <span className="flex items-center gap-2 text-sm text-muted">
-            <MapPin className="size-4 text-brand" /> Ульяновск
+            <MapPin className={cn('size-4', a.text)} /> Ульяновск
           </span>
         </div>
       </PageHero>
 
-      {/* Бейджи проекта */}
+      {/* Большое фото проекта */}
       <section className="container-x">
+        <Reveal>
+          <div className="relative overflow-hidden rounded-[2rem] border border-line">
+            <img
+              src={asset(project.hero)}
+              alt={project.name}
+              className="aspect-[16/10] w-full object-cover object-center sm:aspect-[21/9]"
+            />
+            <div
+              className="pointer-events-none absolute inset-0"
+              style={{ background: `linear-gradient(to top, color-mix(in srgb, ${a.glow} 30%, transparent), transparent 55%)` }}
+            />
+          </div>
+        </Reveal>
+      </section>
+
+      {/* Бейджи проекта */}
+      <section className="container-x mt-6">
         <Reveal
           stagger
           className="grid grid-cols-3 gap-px overflow-hidden rounded-3xl border border-line bg-line"
@@ -37,7 +77,7 @@ export function ProjectPage({ project }: { project: Project }) {
               <p className="text-xs uppercase tracking-wide text-faint">
                 {b.label}
               </p>
-              <p className="mt-1 font-display text-2xl text-brand md:text-3xl">
+              <p className={cn('mt-1 font-display text-2xl md:text-3xl', a.text)}>
                 {b.value}
               </p>
             </RevealItem>
@@ -56,7 +96,7 @@ export function ProjectPage({ project }: { project: Project }) {
           {project.highlights.map((h) => (
             <RevealItem key={h}>
               <div className="flex items-start gap-4 rounded-2xl border border-line bg-elev p-6">
-                <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-brand/10 text-brand">
+                <span className={cn('grid size-10 shrink-0 place-items-center rounded-xl', a.soft, a.text)}>
                   <Check className="size-5" />
                 </span>
                 <p className="text-base text-fg/90">{h}</p>
@@ -66,13 +106,17 @@ export function ProjectPage({ project }: { project: Project }) {
         </Reveal>
       </section>
 
-      {/* Галерея */}
+      {/* Галерея проекта — дома, дворы, благоустройство */}
       <section className="container-x pb-20 md:pb-24">
-        <SectionHeading eyebrow="Галерея" title="Как это выглядит" />
+        <SectionHeading
+          eyebrow="Галерея"
+          title="Дома, дворы и благоустройство"
+          subtitle="Реальные фотографии и архитектурные виды проекта."
+        />
         <Reveal stagger className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {galleryItems.map((g) => (
-            <RevealItem key={g.title}>
-              <GalleryTile title={g.title} hue={g.hue} />
+          {project.shots.map((s) => (
+            <RevealItem key={s.src + s.title}>
+              <ShotTile shot={s} />
             </RevealItem>
           ))}
         </Reveal>
@@ -101,33 +145,25 @@ export function ProjectPage({ project }: { project: Project }) {
   )
 }
 
-function GalleryTile({ title, hue }: { title: string; hue: number }) {
+function ShotTile({ shot }: { shot: ProjectShot }) {
   return (
-    <div className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-line">
-      <div
-        className="absolute inset-0 transition-transform duration-500 group-hover:scale-105"
-        style={{
-          background: `linear-gradient(135deg, hsl(${hue} 45% 16%), hsl(${hue + 20} 55% 9%))`,
-        }}
+    <div className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-line bg-elev">
+      <img
+        src={asset(shot.src)}
+        alt={shot.title}
+        loading="lazy"
+        className="size-full object-cover transition-transform duration-500 group-hover:scale-[1.06]"
       />
-      {/* стилизованные «здания» */}
-      <svg viewBox="0 0 200 150" className="absolute inset-0 size-full opacity-40">
-        {[20, 60, 100, 140].map((x, i) => (
-          <rect
-            key={x}
-            x={x}
-            y={60 + (i % 2) * 20}
-            width="34"
-            height={90 - (i % 2) * 20}
-            rx="3"
-            fill="none"
-            stroke={`hsl(${hue} 70% 60%)`}
-            strokeOpacity="0.5"
-          />
-        ))}
-      </svg>
-      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/90 to-transparent p-5">
-        <p className="font-display text-lg">{title}</p>
+      <span
+        className={cn(
+          'absolute left-3 top-3 rounded-full bg-base/90 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide backdrop-blur',
+          tagColor[shot.tag] ?? 'text-brand',
+        )}
+      >
+        {shot.tag}
+      </span>
+      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/85 to-transparent p-4 pt-10">
+        <p className="text-sm font-semibold text-[#fdf6ec]">{shot.title}</p>
       </div>
     </div>
   )

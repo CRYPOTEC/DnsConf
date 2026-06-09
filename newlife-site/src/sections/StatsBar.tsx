@@ -2,6 +2,9 @@ import { AnimatedCounter } from '@/components/ui/AnimatedCounter'
 import { Reveal, RevealItem } from '@/components/ui/Reveal'
 import { stats } from '@/data/site'
 
+// Разные цвета цифр (палитра фасадов): терракота, зелёный, синий, глина.
+const numColors = ['text-brand', 'text-lime', 'text-sky', 'text-clay']
+
 export function StatsBar() {
   return (
     <section className="container-x">
@@ -9,17 +12,17 @@ export function StatsBar() {
         stagger
         className="grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-line bg-line lg:grid-cols-4"
       >
-        {stats.map((s) => (
+        {stats.map((s, i) => (
           <RevealItem
             key={s.label}
             className="bg-elev px-6 py-8 text-center transition-colors duration-300 hover:bg-elev2"
           >
-            <div className="font-display text-4xl text-fg md:text-5xl">
+            <div className="font-display text-4xl md:text-5xl">
               <AnimatedCounter
                 value={s.value}
                 suffix={s.suffix}
                 decimals={s.value % 1 !== 0 ? 1 : 0}
-                className="text-gradient"
+                className={numColors[i % numColors.length]}
               />
             </div>
             <p className="mt-2 text-sm text-muted">{s.label}</p>
