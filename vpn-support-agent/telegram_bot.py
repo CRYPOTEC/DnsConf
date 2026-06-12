@@ -61,11 +61,17 @@ def run_bot(cfg: Config) -> None:
             offset = update["update_id"] + 1
             business = update.get("business_message")
             message = business or update.get("message") or update.get("edited_message")
-            if not message or "text" not in message:
+            if not message:
                 continue
 
             chat_id = message["chat"]["id"]
-            text = message["text"].strip()
+            # Documents/photos carry their text in "caption", not "text".
+            text = (message.get("text") or message.get("caption") or "").strip()
+            if not text:
+                kinds = [k for k in ("photo", "document", "voice", "video",
+                                     "sticker", "audio", "video_note") if k in message]
+                print(f"[msg] chat={chat_id}: без текста (вложение: {kinds or 'неизвестно'}) — пропущено")
+                continue
             bcid = business.get("business_connection_id") if business else None
 
             # Business mode: the chat is between a customer and the work account.
