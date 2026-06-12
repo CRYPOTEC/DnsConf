@@ -1,11 +1,33 @@
 """Telegram long-polling loop: routes user messages to the SupportAgent."""
 from __future__ import annotations
 
+import datetime as dt
+import json
 import time
+from pathlib import Path
 
 from agent import MAX_HISTORY_MESSAGES, SupportAgent
 from config import Config
 from telegram_api import TelegramAPI
+
+# Full text of every incoming message (stdout log truncates) — useful to
+# recover long texts users send, e.g. draft knowledge-base instructions.
+INCOMING_LOG = Path(__file__).with_name("incoming.log")
+
+
+def _log_incoming(message: dict, text: str) -> None:
+    sender = message.get("from") or {}
+    entry = {
+        "ts": dt.datetime.now().isoformat(timespec="seconds"),
+        "chat_id": message["chat"]["id"],
+        "from": sender.get("username") or sender.get("first_name") or "",
+        "text": text,
+    }
+    try:
+        with INCOMING_LOG.open("a", encoding="utf-8") as f:
+            f.write(json.dumps(entry, ensure_ascii=False) + "\n")
+    except OSError as e:
+        print(f"[incoming.log] не записалось: {e}")
 
 WELCOME = "Здравствуйте! Чем могу помочь?"
 
@@ -59,6 +81,7 @@ def run_bot(cfg: Config) -> None:
                 continue
 
             print(f"[msg] chat={chat_id}{' business' if bcid else ''}: {text[:80]!r}")
+            _log_incoming(message, text)
             convo = histories.get(chat_id, []) + [{"role": "user", "content": text}]
             try:
                 reply, _ = agent.run(convo)
