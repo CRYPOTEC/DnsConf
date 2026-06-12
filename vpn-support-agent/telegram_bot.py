@@ -7,10 +7,7 @@ from agent import MAX_HISTORY_MESSAGES, SupportAgent
 from config import Config
 from telegram_api import TelegramAPI
 
-WELCOME = (
-    "Привет! Я бот поддержки. Опишите проблему (подключение, оплата, скорость, "
-    "не работает сервер и т.п.) — помогу или передам специалисту."
-)
+WELCOME = "Здравствуйте! Чем могу помочь?"
 
 
 def _trim(history: list[dict]) -> list[dict]:
@@ -61,12 +58,14 @@ def run_bot(cfg: Config) -> None:
                 tg.send_message(chat_id, WELCOME)
                 continue
 
+            print(f"[msg] chat={chat_id}{' business' if bcid else ''}: {text[:80]!r}")
             convo = histories.get(chat_id, []) + [{"role": "user", "content": text}]
             try:
                 reply, _ = agent.run(convo)
             except Exception as e:
                 print(f"[agent] ошибка: {e}")
                 reply = "Извините, временная ошибка. Попробуйте ещё раз чуть позже."
+            print(f"[reply] chat={chat_id}: {reply[:80]!r}")
 
             tg.send_message(chat_id, reply, business_connection_id=bcid)
             histories[chat_id] = _trim(
