@@ -23,6 +23,11 @@ def _log_incoming(message: dict, text: str) -> None:
         "from": sender.get("username") or sender.get("first_name") or "",
         "text": text,
     }
+    # Forwarded posts keep URLs in entities, not in the visible text.
+    ents = (message.get("entities") or []) + (message.get("caption_entities") or [])
+    links = [e["url"] for e in ents if e.get("type") == "text_link" and e.get("url")]
+    if links:
+        entry["links"] = links
     try:
         with INCOMING_LOG.open("a", encoding="utf-8") as f:
             f.write(json.dumps(entry, ensure_ascii=False) + "\n")
