@@ -40,14 +40,24 @@ def run_bot(cfg: Config) -> None:
 
         for update in updates:
             offset = update["update_id"] + 1
-            message = update.get("message") or update.get("edited_message")
+            business = update.get("business_message")
+            message = business or update.get("message") or update.get("edited_message")
             if not message or "text" not in message:
                 continue
 
             chat_id = message["chat"]["id"]
             text = message["text"].strip()
+            bcid = business.get("business_connection_id") if business else None
 
-            if text in ("/start", "/help"):
+            # Business mode: the chat is between a customer and the work account.
+            # Outgoing messages typed by the account owner also arrive as
+            # business_message (sender ≠ chat) — never auto-reply to those.
+            if business:
+                sender_id = (message.get("from") or {}).get("id")
+                if sender_id != chat_id:
+                    continue
+
+            if text in ("/start", "/help") and not business:
                 tg.send_message(chat_id, WELCOME)
                 continue
 
@@ -58,7 +68,7 @@ def run_bot(cfg: Config) -> None:
                 print(f"[agent] ошибка: {e}")
                 reply = "Извините, временная ошибка. Попробуйте ещё раз чуть позже."
 
-            tg.send_message(chat_id, reply)
+            tg.send_message(chat_id, reply, business_connection_id=bcid)
             histories[chat_id] = _trim(
                 histories.get(chat_id, [])
                 + [{"role": "user", "content": text}, {"role": "assistant", "content": reply}]
