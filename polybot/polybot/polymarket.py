@@ -50,6 +50,26 @@ def fetch_by_slug(slug: str, timeout: float = 15.0) -> Market | None:
     return None
 
 
+def fetch_by_slugs(slugs: list[str], chunk: int = 40,
+                   timeout: float = 20.0) -> dict[str, Market]:
+    """Resolve many markets by slug in batched requests (Gamma accepts repeated
+    `slug=` params). Returns {slug: Market}. Far cheaper than one call each."""
+    out: dict[str, Market] = {}
+    for i in range(0, len(slugs), chunk):
+        part = slugs[i:i + chunk]
+        q = "&".join("slug=" + urllib.parse.quote(s) for s in part)
+        url = f"{GAMMA}?limit=100&{q}"
+        try:
+            data = json.loads(get_text(url, timeout))
+        except Exception:  # noqa: BLE001 - one bad chunk shouldn't sink the rest
+            continue
+        for raw in data:
+            m = _parse_market(raw)
+            if m and m.slug:
+                out[m.slug] = m
+    return out
+
+
 def fetch_by_id(market_id: str, timeout: float = 15.0) -> Market | None:
     data = json.loads(get_text(f"{GAMMA}/{market_id}", timeout))
     raw = data[0] if isinstance(data, list) else data

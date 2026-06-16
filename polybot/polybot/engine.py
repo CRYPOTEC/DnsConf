@@ -35,19 +35,43 @@ def _default_market_fetcher(slug: str, market_id: str) -> Market | None:
     return None
 
 
-def resolve_watchlist(cfg: Config, fetcher: MarketFetcher) -> dict[str, Market]:
-    out: dict[str, Market] = {}
-    for item in cfg.watchlist:
-        key = item.slug or item.id
-        if not key:
-            continue
-        try:
-            m = fetcher(item.slug, item.id)
-        except Exception as exc:  # noqa: BLE001
-            print(f"  ! failed to load market {key}: {exc}")
-            continue
+def resolve_watchlist(cfg: Config, fetcher: MarketFetcher | None = None) -> dict[str, Market]:
+    """Resolve every watch entry to a live Market, keyed by slug-or-id.
+
+    Default path batches by slug (cheap for large watchlists). If a per-entry
+    `fetcher` is injected (tests), the legacy one-by-one path is used.
+    """
+    if fetcher is not None:
+        out: dict[str, Market] = {}
+        for item in cfg.watchlist:
+            key = item.slug or item.id
+            if not key:
+                continue
+            try:
+                m = fetcher(item.slug, item.id)
+            except Exception as exc:  # noqa: BLE001
+                print(f"  ! failed to load market {key}: {exc}")
+                continue
+            if m:
+                out[key] = m
+        return out
+
+    # Production batch path.
+    out = {}
+    slug_items = [w for w in cfg.watchlist if w.slug]
+    id_items = [w for w in cfg.watchlist if not w.slug and w.id]
+    by_slug = polymarket.fetch_by_slugs([w.slug for w in slug_items])
+    for w in slug_items:
+        m = by_slug.get(w.slug)
         if m:
-            out[key] = m
+            out[w.slug] = m
+    for w in id_items:
+        try:
+            m = polymarket.fetch_by_id(w.id)
+        except Exception:  # noqa: BLE001
+            m = None
+        if m:
+            out[w.id] = m
     return out
 
 
@@ -148,7 +172,6 @@ def run_once(
     log: Callable[[str], None] = print,
 ) -> list:
     """One full cycle. Mutates pf/seen_news/traded_keys/alerts in place."""
-    market_fetcher = market_fetcher or _default_market_fetcher
     notifier = notifier or NullNotifier()
     if alerts is None:
         alerts = {}
