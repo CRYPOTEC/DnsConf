@@ -53,10 +53,12 @@
 - `ffmpeg` ставится setup-скриптом окружения (`apt update && apt install -y ffmpeg`).
 - **Секреты — только через переменные окружения**, не в гит. Ключ ElevenLabs: переменная `ELEVENLABS_API_KEY`.
 - **Доставка роликов в Telegram (durable, по просьбе пользователя 2026-06-16):** каждый готовый ролик
-  дублировать пользователю в Telegram. Отдельного Telegram-MCP нет → слать через **Telegram Bot API** (`curl`
-  `https://api.telegram.org/bot<TOKEN>/sendVideo` с `chat_id`). Нужны переменные окружения
+  дублировать пользователю в Telegram **ВСЕГДА КАК ФАЙЛ/ДОКУМЕНТ** (`sendDocument`, без сжатия — НЕ `sendVideo`).
+  Отдельного Telegram-MCP нет → слать через **Telegram Bot API** (`curl`
+  `https://api.telegram.org/bot<TOKEN>/sendDocument` с `chat_id` и `document=@file`). Нужны переменные окружения
   `TELEGRAM_BOT_TOKEN` и `TELEGRAM_CHAT_ID` (chat_id можно получить через `getUpdates` после сообщения боту).
-  Токен в гит НЕ коммитить. Пока кредов нет — отдавать файлы через SendUserFile и напомнить про токен.
+  Токен в гит НЕ коммитить (в этой сессии лежит в `/tmp/tg.env`, бот @crypotecbot, chat_id 5406143589).
+  Также всегда отдавать ролик файлом через SendUserFile. Лимит Bot API на файл — 50 МБ; если больше — сжать.
 - Доступные MCP: **Higgsfield** (генерация изображений/видео/аудио, ходит через серверы Anthropic, работает
   независимо от allowlist) и **GitHub**.
 - Higgsfield user-префикс CDN: `user_3Ek1JHHvfr8D4qa9ou43dNuTnrN`.
