@@ -99,3 +99,14 @@
   русскую TTS-дорожку (Dmitry). Завис на финале: ElevenLabs и склейка требуют сетевого доступа, а сессия
   стартовала со старой (закрытой) политикой. Следующий шаг — в сессии с Full-доступом: голос ElevenLabs +
   ffmpeg-склейка → готовый ролик со звуком.
+- **2026-06-16:** Пользователь попросил рекламу в формате **HyperMotion** (Higgsfield Marketing Studio) —
+  «японская реклама шоколада» по промпту из кнопки «recreate»:
+  *«chocolate japanese style commercial, with chocolate crunching, pieces breaking, hands passing chocolate
+  to each other, japanese happy people smiling while biting, and these little characters animated»*.
+  Оказалось, что этот ролик **уже сгенерирован** в аккаунте (модель `marketing_studio_video`, job
+  `6cfc03c7-3dc9-4358-b776-76714281a9bc`, 2026-06-09): 16:9, 12с, 720p, со звуком, Higgsfield сам развернул
+  промпт в раскадровку из 12 кат-сцен. Скачал его с CDN и отдал пользователю через SendUserFile.
+  Файл: `hf_20260609_183143_6cfc03c7-3dc9-4358-b776-76714281a9bc.mp4`.
+  ⚠️ Запустить НОВУЮ генерацию не смог: в сессии higgsfield-сервер поднял лишь часть тулзов —
+  `generate_video`/`generate_image`/`models_explore` не зарегистрировались. Для свежего рендера HyperMotion
+  нужна новая сессия с полным тулсетом Higgsfield (формат = Marketing Studio video, mode `product_showcase`).
