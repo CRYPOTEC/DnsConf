@@ -34,3 +34,16 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### Ad-video media artifacts (SVOY VPN HyperMotion ad) ###
+# Large binaries produced via Higgsfield + ffmpeg, stored durably on the
+# Higgsfield CDN. See video-project/ASSETS.md for job ids and URLs to re-fetch.
+*.mp4
+*.png
+*.jpg
+*.jpeg
+*.mp3
+*.m4a
+*.wav
+# Background poller transient output
+*.output
