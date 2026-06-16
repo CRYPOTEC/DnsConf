@@ -1,0 +1,21 @@
+# systemd unit for a Linux VPS.
+#   sudo cp -r polybot /opt/polybot && cd /opt/polybot
+#   cp deploy/.env.example .env && edit .env
+#   sudo cp deploy/polybot.service /etc/systemd/system/
+#   sudo systemctl daemon-reload && sudo systemctl enable --now polybot
+#   journalctl -u polybot -f          # live logs
+[Unit]
+Description=polybot - Polymarket news trading bot (paper by default)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/polybot
+EnvironmentFile=/opt/polybot/.env
+ExecStart=/usr/bin/python3 -m polybot --config config.politics.json run --loop
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

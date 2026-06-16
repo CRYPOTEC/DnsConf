@@ -1,0 +1,10 @@
+# The polybot core (paper trading, keyword strategy, RSS, backtest) runs on the
+# Python 3.10+ standard library only — no runtime deps required.
+#
+# Optional, enable extra features:
+#   anthropic         # strategy: "llm"  (also needs ANTHROPIC_API_KEY)
+#   websockets        # websocket_url news source
+#   py-clob-client    # live execution   (also needs POLYMARKET_PK)
+#
+# Dev:
+#   pytest            # tests also run under `python -m unittest`
