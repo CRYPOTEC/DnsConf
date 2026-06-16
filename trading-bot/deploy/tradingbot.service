@@ -1,0 +1,26 @@
+# systemd unit for running the bot directly (without Docker) on a VPS.
+# 1) Put the project at /opt/trading-bot and create a venv there:
+#       python3 -m venv /opt/trading-bot/.venv
+#       /opt/trading-bot/.venv/bin/pip install -r /opt/trading-bot/requirements.txt
+# 2) Create /opt/trading-bot/.env with BYBIT_API_KEY / BYBIT_API_SECRET (chmod 600).
+# 3) Copy this file to /etc/systemd/system/tradingbot.service, then:
+#       systemctl daemon-reload && systemctl enable --now tradingbot
+#       journalctl -u tradingbot -f
+[Unit]
+Description=Bybit breakout trading bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/trading-bot
+EnvironmentFile=/opt/trading-bot/.env
+ExecStart=/opt/trading-bot/.venv/bin/python -m bot.main --config config.json --mode live
+Restart=always
+RestartSec=10
+# basic hardening
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

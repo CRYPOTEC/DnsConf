@@ -1,0 +1,36 @@
+{
+  "mode": "backtest",
+  "env": "demo",
+  "poll_interval": 15,
+  "candle_limit": 200,
+  "state_path": "state/bot_state.json",
+
+  "symbols": [
+    { "symbol": "BTCUSDT", "market": "linear", "interval": "60", "leverage": 3 },
+    { "symbol": "ETHUSDT", "market": "linear", "interval": "60", "leverage": 3 }
+  ],
+
+  "strategy": {
+    "entry_period": 20,
+    "exit_period": 10,
+    "atr_period": 14,
+    "atr_stop_mult": 2.0,
+    "allow_short": true
+  },
+
+  "risk": {
+    "risk_per_trade": 0.01,
+    "max_leverage": 3.0,
+    "max_daily_loss": 0.10,
+    "min_notional": 5.0
+  },
+
+  "sim": {
+    "starting_balance": 10000,
+    "n_candles": 1500,
+    "seed": 42,
+    "start_price": 50000,
+    "fee_rate": 0.00055,
+    "slippage": 0.0005
+  }
+}
