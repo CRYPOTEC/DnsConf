@@ -1,0 +1,10 @@
+# keep only final delivered videos + audio; ignore intermediates/source frames
+*.png
+*.jpg
+*.jpeg
+*.json
+clip_s*.mp4
+shot1.mp4
+shot3.mp4
+insert.mp4
+video_silent.mp4
