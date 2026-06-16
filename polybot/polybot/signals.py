@@ -101,3 +101,57 @@ def detect(
                 suggested_price=market.price_of(outcome_idx),
             ))
     return signals
+
+
+def detect_llm(
+    news_items: list[NewsItem],
+    markets: dict[str, Market],
+    watch: list[WatchItem],
+    min_confidence: float,
+    scorer,                       # duck-typed: .score(news, market) -> Verdict|None
+    max_calls: int = 20,
+) -> list[Signal]:
+    """LLM-scored detection.
+
+    The keyword `match_keywords` still gate relevance (a cheap pre-filter that
+    bounds how many paid LLM calls we make); Claude then judges direction and
+    confidence. Falls through to nothing if the scorer returns None.
+    """
+    signals: list[Signal] = []
+    calls = 0
+    for item in watch:
+        key = item.slug or item.id
+        market = markets.get(key)
+        if market is None:
+            continue
+        bull_idx = market.outcome_index(item.bull_outcome)
+        bear_idx = market.outcome_index(item.bear_outcome)
+        if bull_idx < 0 or bear_idx < 0:
+            continue
+        for news in news_items:
+            _, _, relevant = _count_hits(news.text, item.match_keywords)
+            if not relevant:
+                continue
+            if calls >= max_calls:
+                return signals
+            verdict = scorer.score(news, market)
+            calls += 1
+            if verdict is None or not verdict.relevant:
+                continue
+            if verdict.direction == "yes":
+                outcome_idx = bull_idx
+            elif verdict.direction == "no":
+                outcome_idx = bear_idx
+            else:
+                continue
+            if verdict.confidence < min_confidence:
+                continue
+            signals.append(Signal(
+                market=market,
+                outcome_index=outcome_idx,
+                confidence=verdict.confidence,
+                rationale=f"LLM: {verdict.rationale}",
+                news_uid=news.uid,
+                suggested_price=market.price_of(outcome_idx),
+            ))
+    return signals

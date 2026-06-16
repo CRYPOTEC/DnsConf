@@ -1,0 +1,43 @@
+{
+  "starting_cash": 1000.0,
+  "stake_usd": 100.0,
+  "min_confidence": 0.5,
+  "slippage_bps": 0.0,
+  "watchlist": [
+    {
+      "slug": "demo-iran",
+      "match_keywords": ["iran", "tehran"],
+      "bull_keywords": ["peace deal", "agreement"],
+      "bear_keywords": ["strike", "war"]
+    }
+  ],
+  "markets": [
+    {
+      "id": "1",
+      "slug": "demo-iran",
+      "question": "US x Iran peace deal?",
+      "outcomes": ["Yes", "No"],
+      "prices": [0.40, 0.60],
+      "token_ids": ["tok-yes", "tok-no"]
+    }
+  ],
+  "news": [
+    {
+      "source": "demo",
+      "title": "Iran and US reach historic peace deal",
+      "link": "https://example.com/a",
+      "summary": "An agreement was signed in Geneva.",
+      "published": 1750000000
+    },
+    {
+      "source": "demo",
+      "title": "Markets rally on tech earnings",
+      "link": "https://example.com/b",
+      "summary": "Unrelated to the watchlist.",
+      "published": 1750000100
+    }
+  ],
+  "resolutions": {
+    "demo-iran": 0
+  }
+}

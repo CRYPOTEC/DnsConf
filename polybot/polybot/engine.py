@@ -1,7 +1,7 @@
-"""Orchestration: news -> signals -> simulated trades -> persisted state.
+"""Orchestration: sources -> signals -> simulated (and optional live) trades.
 
-The two I/O dependencies (market fetcher, news fetcher) are injectable so
-the cycle can be unit-tested offline.
+I/O dependencies (market fetcher, sources, LLM scorer, live broker) are
+injectable so the cycle can be unit-tested offline.
 """
 
 from __future__ import annotations
@@ -9,15 +9,14 @@ from __future__ import annotations
 import time
 from typing import Callable
 
-from . import news as news_mod
 from . import polymarket
+from . import sources as sources_mod
 from .config import Config
 from .models import Market, NewsItem
 from .paper import InsufficientFunds, PaperBroker, Portfolio
-from .signals import detect
+from .signals import detect, detect_llm
 
-MarketFetcher = Callable[[str, str], "Market | None"]  # (slug, id) -> Market
-NewsFetcher = Callable[[list[str]], list[NewsItem]]
+MarketFetcher = Callable[[str, str], "Market | None"]
 
 
 def _default_market_fetcher(slug: str, market_id: str) -> Market | None:
@@ -45,44 +44,76 @@ def resolve_watchlist(cfg: Config, fetcher: MarketFetcher) -> dict[str, Market]:
     return out
 
 
+def maybe_resolve(pf: Portfolio, markets: dict[str, Market], broker: PaperBroker,
+                  log: Callable[[str], None]) -> None:
+    """Settle paper positions for any watched market that has resolved.
+
+    A Gamma market is treated as resolved when it is closed; the winning
+    outcome is the one priced nearest 1.0.
+    """
+    held = {pos.market_id for pos in pf.positions.values()}
+    seen_ids: set[str] = set()
+    for m in markets.values():
+        if m.id in seen_ids or m.id not in held or not m.closed:
+            continue
+        seen_ids.add(m.id)
+        winner = max(range(len(m.prices)), key=lambda i: m.prices[i])
+        pnl = broker.resolve(m, winner)
+        log(f"  RESOLVED '{m.outcomes[winner]}' wins {m.slug} -> realized ${pnl:+.2f}")
+
+
 def run_once(
     cfg: Config,
     pf: Portfolio,
     seen_news: set[str],
     traded_keys: dict[str, float],
+    *,
     market_fetcher: MarketFetcher | None = None,
-    news_fetcher: NewsFetcher | None = None,
+    sources: list | None = None,
+    scorer=None,
+    live_broker=None,
     log: Callable[[str], None] = print,
 ) -> list:
     """One full cycle. Mutates pf/seen_news/traded_keys in place.
 
-    Returns the list of executed trades (for logging/tests).
+    Returns the list of executed paper trades.
     """
     market_fetcher = market_fetcher or _default_market_fetcher
-    news_fetcher = news_fetcher or news_mod.fetch_all
+    if sources is None:
+        sources = sources_mod.build_sources(cfg)
 
     markets = resolve_watchlist(cfg, market_fetcher)
     if not markets:
         log("  no watched markets resolved (empty watchlist?)")
         return []
 
-    items = news_fetcher(cfg.news_feeds)
-    fresh = [n for n in items if n.uid not in seen_news]
-    log(f"  fetched {len(items)} headlines ({len(fresh)} new)")
-
-    signals = detect(fresh, markets, cfg.watchlist, cfg.min_confidence)
-
     broker = PaperBroker(
         pf, fee_bps=cfg.fee_bps, slippage_bps=cfg.slippage_bps,
         max_position_usd=cfg.max_position_usd,
     )
+
+    # Settle anything that has resolved since last cycle.
+    maybe_resolve(pf, markets, broker, log)
+
+    items = sources_mod.fetch_all(sources)
+    fresh = [n for n in items if n.uid not in seen_news]
+    log(f"  fetched {len(items)} headlines ({len(fresh)} new)")
+
+    open_markets = {k: m for k, m in markets.items() if not m.closed}
+    if cfg.strategy == "llm" and scorer is not None:
+        signals = detect_llm(fresh, open_markets, cfg.watchlist, cfg.min_confidence,
+                             scorer, max_calls=cfg.llm_max_calls_per_cycle)
+    else:
+        if cfg.strategy == "llm":
+            log("  (llm strategy requested but no scorer available -> keyword)")
+        signals = detect(fresh, open_markets, cfg.watchlist, cfg.min_confidence)
+
     executed = []
     now = time.time()
     for sig in signals:
         out_key = f"{sig.market.id}:{sig.outcome_index}"
-        last = traded_keys.get(out_key, 0.0)
-        if now - last < cfg.cooldown_sec:
-            continue  # respect cooldown per outcome
+        if now - traded_keys.get(out_key, 0.0) < cfg.cooldown_sec:
+            continue
         try:
             trade = broker.buy(sig, cfg.stake_usd)
         except InsufficientFunds as exc:
@@ -94,8 +125,10 @@ def run_once(
             f"  BUY {trade.shares:.1f} '{trade.outcome_name}' @ {trade.price:.3f} "
             f"(${trade.cost:.2f}) conf={sig.confidence:.2f} :: {sig.rationale}"
         )
+        if live_broker is not None:
+            result = live_broker.execute(sig, cfg.stake_usd, pf)
+            log(f"    live: {result.get('status')} - {result.get('reason', '')}".rstrip(" -"))
 
-    # mark every processed headline as seen so we never re-trade it
     for n in fresh:
         seen_news.add(n.uid)
 
