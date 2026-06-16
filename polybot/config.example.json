@@ -1,0 +1,23 @@
+{
+  "starting_cash": 1000.0,
+  "stake_usd": 25.0,
+  "max_position_usd": 100.0,
+  "min_confidence": 0.5,
+  "fee_bps": 0.0,
+  "slippage_bps": 50.0,
+  "cooldown_sec": 3600,
+  "poll_interval_sec": 120,
+  "news_feeds": [
+    "http://feeds.bbci.co.uk/news/world/rss.xml",
+    "https://feeds.npr.org/1004/rss.xml",
+    "https://rss.cnn.com/rss/edition_world.rss"
+  ],
+  "watchlist": [
+    {
+      "slug": "us-x-iran-permanent-peace-deal-by-june-15-2026-734-856-129",
+      "match_keywords": ["iran", "tehran", "u.s.-iran", "us-iran"],
+      "bull_keywords": ["peace deal", "agreement", "ceasefire", "accord", "sign deal"],
+      "bear_keywords": ["strike", "attack", "war", "collapse", "talks fail", "sanction"]
+    }
+  ]
+}

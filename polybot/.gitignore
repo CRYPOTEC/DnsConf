@@ -1,0 +1,7 @@
+# local runtime artifacts
+config.json
+state.json
+*.tmp
+__pycache__/
+*.pyc
+.pytest_cache/
