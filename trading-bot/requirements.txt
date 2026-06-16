@@ -1,0 +1,3 @@
+# Only needed for live/demo trading (the BybitExchange adapter).
+# The backtest/paper simulator runs on the Python standard library alone.
+pybit>=5.16.0
