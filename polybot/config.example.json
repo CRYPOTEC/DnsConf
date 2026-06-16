@@ -8,6 +8,12 @@
   "cooldown_sec": 3600,
   "poll_interval_sec": 120,
 
+  "take_profit_pct": 0.5,
+  "stop_loss_pct": 0.5,
+  "exit_price_above": 0.97,
+  "notify_gain_tiers": [0.2, 0.5, 1.0],
+  "notify_heartbeat_sec": 3600,
+
   "strategy": "keyword",
   "llm_model": "claude-opus-4-8",
   "llm_effort": "low",

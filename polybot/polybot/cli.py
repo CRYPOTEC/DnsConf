@@ -16,6 +16,7 @@ import shutil
 import time
 
 from . import backtest as backtest_mod
+from . import notify as notify_mod
 from . import polymarket, sources, storage
 from .config import Config
 from .engine import run_once
@@ -41,7 +42,7 @@ def _cmd_news(args) -> None:
 
 def _cmd_status(args) -> None:
     cfg = Config.load(args.config)
-    pf, seen, traded = storage.load(cfg.state_file, cfg.starting_cash)
+    pf, seen, traded, alerts = storage.load(cfg.state_file, cfg.starting_cash)
     print(f"cash       : ${pf.cash:.2f}")
     print(f"start cash : ${pf.starting_cash:.2f}")
     print(f"realized   : ${pf.realized_pnl:+.2f}")
@@ -91,16 +92,28 @@ def _build_live_broker(cfg: Config):
 
 def _cmd_run(args) -> None:
     cfg = Config.load(args.config)
-    pf, seen, traded = storage.load(cfg.state_file, cfg.starting_cash)
+    pf, seen, traded, alerts = storage.load(cfg.state_file, cfg.starting_cash)
     srcs = sources.build_sources(cfg)
     scorer = _build_scorer(cfg)
     live_broker = _build_live_broker(cfg)
+    notifier = notify_mod.build_notifier()
+    print(f"  notifications: {notifier.name}")
+
+    mode = "ЛАЙВ" if cfg.live_enabled else "бумага"
+    notifier.send(
+        f"🤖 polybot запущен ({mode}): рынков {len(cfg.watchlist)}, "
+        f"стратегия {cfg.strategy}, источники {', '.join(s.name for s in srcs) or '—'}. "
+        f"Буду писать про входы, рост и выходы.")
 
     def cycle() -> None:
         print(f"[{time.strftime('%H:%M:%S')}] cycle")
-        run_once(cfg, pf, seen, traded, sources=srcs, scorer=scorer,
-                 live_broker=live_broker)
-        storage.save(cfg.state_file, pf, seen, traded)
+        try:
+            run_once(cfg, pf, seen, traded, alerts, sources=srcs, scorer=scorer,
+                     live_broker=live_broker, notifier=notifier)
+            storage.save(cfg.state_file, pf, seen, traded, alerts)
+        except Exception as exc:  # noqa: BLE001 - keep the 24/7 loop alive
+            print(f"  ! cycle error: {exc}")
+            notifier.send(f"⚠️ Ошибка цикла (продолжаю работать): {exc}")
 
     cycle()
     if args.loop:
@@ -110,6 +123,26 @@ def _cmd_run(args) -> None:
                 cycle()
         except KeyboardInterrupt:
             print("\nstopped.")
+            notifier.send("🛑 polybot остановлен.")
+
+
+def _cmd_telegram_test(args) -> None:
+    token = os.environ.get("TELEGRAM_BOT_TOKEN")
+    if not token:
+        print("TELEGRAM_BOT_TOKEN не задан. Получи токен у @BotFather и положи в env.")
+        return
+    chat = os.environ.get("TELEGRAM_CHAT_ID")
+    if not chat:
+        print("TELEGRAM_CHAT_ID не задан. Напиши что-нибудь своему боту, затем ищу chat id...")
+        ids = notify_mod.discover_chat_id(token)
+        if ids:
+            print("Найденные chat id (положи нужный в TELEGRAM_CHAT_ID):", ", ".join(ids))
+        else:
+            print("Не нашёл сообщений. Сначала напиши боту в Telegram, потом повтори.")
+        return
+    notify_mod.TelegramNotifier(token, chat).send(
+        "✅ polybot: тестовое сообщение. Связь с Telegram работает.")
+    print("Отправлено.")
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -137,6 +170,9 @@ def build_parser() -> argparse.ArgumentParser:
     b = sub.add_parser("backtest", help="replay a saved dataset offline")
     b.add_argument("--data", required=True, help="path to backtest dataset JSON")
     b.set_defaults(func=_cmd_backtest)
+
+    t = sub.add_parser("telegram-test", help="verify Telegram setup / discover chat id")
+    t.set_defaults(func=_cmd_telegram_test)
 
     i = sub.add_parser("init", help="create config.json from the example")
     i.set_defaults(func=_cmd_init)

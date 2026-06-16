@@ -3,6 +3,7 @@ import unittest
 from polybot.config import Config, WatchItem
 from polybot.engine import maybe_resolve, run_once
 from polybot.models import Market, NewsItem, Signal
+from polybot.notify import NullNotifier
 from polybot.paper import PaperBroker, Portfolio
 
 
@@ -30,7 +31,7 @@ class ResolveTests(unittest.TestCase):
         broker.buy(sig, 100.0)  # 250 shares @0.40
         closed = Market(id="1", question="Q", slug="m", outcomes=["Yes", "No"],
                         prices=[0.99, 0.01], token_ids=["a", "b"], closed=True)
-        maybe_resolve(pf, {"m": closed}, broker, log=lambda *_: None)
+        maybe_resolve(pf, {"m": closed}, broker, NullNotifier(), log=lambda *_: None)
         self.assertEqual(len(pf.positions), 0)
         self.assertAlmostEqual(pf.realized_pnl, 150.0)  # 250*(1-0.4)
 

@@ -1,4 +1,5 @@
-"""JSON persistence so restarts don't lose the portfolio or re-trade news."""
+"""JSON persistence so restarts don't lose the portfolio, re-trade news, or
+re-fire notifications."""
 
 from __future__ import annotations
 
@@ -9,7 +10,8 @@ from .models import Position, Trade
 from .paper import Portfolio
 
 
-def save(path: str, pf: Portfolio, seen_news: set[str], traded_keys: dict[str, float]) -> None:
+def save(path: str, pf: Portfolio, seen_news: set[str],
+         traded_keys: dict[str, float], alerts: dict | None = None) -> None:
     state = {
         "starting_cash": pf.starting_cash,
         "cash": pf.cash,
@@ -18,6 +20,7 @@ def save(path: str, pf: Portfolio, seen_news: set[str], traded_keys: dict[str, f
         "trades": [vars(t) for t in pf.trades],
         "seen_news": sorted(seen_news),
         "traded_keys": traded_keys,
+        "alerts": alerts or {},
     }
     tmp = f"{path}.tmp"
     with open(tmp, "w", encoding="utf-8") as fh:
@@ -25,9 +28,10 @@ def save(path: str, pf: Portfolio, seen_news: set[str], traded_keys: dict[str, f
     os.replace(tmp, path)  # atomic write
 
 
-def load(path: str, starting_cash: float) -> tuple[Portfolio, set[str], dict[str, float]]:
+def load(path: str, starting_cash: float):
+    """Returns (Portfolio, seen_news set, traded_keys dict, alerts dict)."""
     if not os.path.exists(path):
-        return Portfolio(starting_cash), set(), {}
+        return Portfolio(starting_cash), set(), {}, {}
     with open(path, "r", encoding="utf-8") as fh:
         state = json.load(fh)
 
@@ -41,4 +45,5 @@ def load(path: str, starting_cash: float) -> tuple[Portfolio, set[str], dict[str
 
     seen = set(state.get("seen_news", []))
     traded = dict(state.get("traded_keys", {}))
-    return pf, seen, traded
+    alerts = dict(state.get("alerts", {}))
+    return pf, seen, traded, alerts

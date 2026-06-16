@@ -1,0 +1,13 @@
+# Run from the polybot/ directory:  docker compose -f deploy/docker-compose.yml up -d
+services:
+  polybot:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+    image: polybot
+    restart: unless-stopped
+    env_file: ../.env          # copy deploy/.env.example -> .env and fill it in
+    # Persist portfolio/state across restarts. Set "state_file":"data/state.json"
+    # in config.politics.json to use this mount.
+    volumes:
+      - ../data:/app/data

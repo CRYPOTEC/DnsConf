@@ -1,7 +1,14 @@
-"""Orchestration: sources -> signals -> simulated (and optional live) trades.
+"""Orchestration: sources -> signals -> trades -> position management.
 
-I/O dependencies (market fetcher, sources, LLM scorer, live broker) are
-injectable so the cycle can be unit-tested offline.
+Each cycle the engine:
+  1. settles markets that have resolved (notify),
+  2. manages open positions: take-profit / stop-loss / near-resolution exits
+     and gain-milestone alerts (notify),
+  3. detects new signals and opens paper (and optional live) positions (notify),
+  4. emits a periodic portfolio heartbeat.
+
+I/O dependencies (market fetcher, sources, LLM scorer, live broker, notifier)
+are injectable so the cycle can be unit-tested offline.
 """
 
 from __future__ import annotations
@@ -12,7 +19,8 @@ from typing import Callable
 from . import polymarket
 from . import sources as sources_mod
 from .config import Config
-from .models import Market, NewsItem
+from .models import Market
+from .notify import NullNotifier
 from .paper import InsufficientFunds, PaperBroker, Portfolio
 from .signals import detect, detect_llm
 
@@ -28,7 +36,6 @@ def _default_market_fetcher(slug: str, market_id: str) -> Market | None:
 
 
 def resolve_watchlist(cfg: Config, fetcher: MarketFetcher) -> dict[str, Market]:
-    """Resolve each watch entry to a live Market, keyed by slug-or-id."""
     out: dict[str, Market] = {}
     for item in cfg.watchlist:
         key = item.slug or item.id
@@ -44,13 +51,21 @@ def resolve_watchlist(cfg: Config, fetcher: MarketFetcher) -> dict[str, Market]:
     return out
 
 
-def maybe_resolve(pf: Portfolio, markets: dict[str, Market], broker: PaperBroker,
-                  log: Callable[[str], None]) -> None:
-    """Settle paper positions for any watched market that has resolved.
+def _current_price(markets: dict[str, Market], pos) -> float | None:
+    for m in markets.values():
+        if m.id == pos.market_id and pos.outcome_index < len(m.prices):
+            return m.prices[pos.outcome_index]
+    return None
 
-    A Gamma market is treated as resolved when it is closed; the winning
-    outcome is the one priced nearest 1.0.
-    """
+
+def markets_price(markets: dict[str, Market], pos) -> float:
+    p = _current_price(markets, pos)
+    return p if p is not None else pos.avg_price
+
+
+def maybe_resolve(pf: Portfolio, markets: dict[str, Market], broker: PaperBroker,
+                  notifier, log: Callable[[str], None]) -> None:
+    """Settle paper positions for any watched market that has resolved."""
     held = {pos.market_id for pos in pf.positions.values()}
     seen_ids: set[str] = set()
     for m in markets.values():
@@ -59,7 +74,63 @@ def maybe_resolve(pf: Portfolio, markets: dict[str, Market], broker: PaperBroker
         seen_ids.add(m.id)
         winner = max(range(len(m.prices)), key=lambda i: m.prices[i])
         pnl = broker.resolve(m, winner)
-        log(f"  RESOLVED '{m.outcomes[winner]}' wins {m.slug} -> realized ${pnl:+.2f}")
+        msg = (f"🏁 Рынок разрешился: победил «{m.outcomes[winner]}» "
+               f"[{m.question[:60]}]. Реализовано ${pnl:+.2f}.")
+        notifier.send(msg)
+        log("  " + msg)
+
+
+def manage_positions(cfg: Config, pf: Portfolio, markets: dict[str, Market],
+                     broker: PaperBroker, notifier, alerts: dict,
+                     log: Callable[[str], None]) -> None:
+    """Exit (TP/SL/near-resolution) and fire gain-milestone alerts."""
+    for key in list(pf.positions.keys()):
+        pos = pf.positions[key]
+        price = _current_price(markets, pos)
+        if price is None or pos.avg_price <= 0:
+            continue
+        gain = (price - pos.avg_price) / pos.avg_price
+
+        reason = None
+        if gain >= cfg.take_profit_pct:
+            reason = f"тейк-профит +{gain * 100:.0f}%"
+        elif gain <= -cfg.stop_loss_pct:
+            reason = f"стоп-лосс {gain * 100:.0f}%"
+        elif price >= cfg.exit_price_above:
+            reason = f"фиксация у разрешения (цена {price:.2f})"
+
+        if reason is not None:
+            _, realized = broker.sell(key, price, reason)
+            alerts.pop(key, None)
+            icon = "✅" if realized >= 0 else "🛑"
+            msg = (f"{icon} Закрываю «{pos.outcome_name}» [{pos.market_question[:50]}] "
+                   f"— {reason}. P&L ${realized:+.2f}.")
+            notifier.send(msg)
+            log("  " + msg)
+            continue
+
+        # gain-milestone alerts (notify once per crossed tier)
+        last_tier = alerts.get(key, -1)
+        new_tier = last_tier
+        for i, t in enumerate(cfg.notify_gain_tiers):
+            if gain >= t:
+                new_tier = max(new_tier, i)
+        if new_tier > last_tier:
+            alerts[key] = new_tier
+            unreal = pos.shares * (price - pos.avg_price)
+            msg = (f"📈 +{gain * 100:.0f}% по «{pos.outcome_name}» "
+                   f"[{pos.market_question[:50]}] — бумажная прибыль ${unreal:+.2f}. "
+                   f"Держу; выйду при +{cfg.take_profit_pct * 100:.0f}% / "
+                   f"−{cfg.stop_loss_pct * 100:.0f}% / у разрешения.")
+            notifier.send(msg)
+            log("  " + msg)
+
+
+def _summary(pf: Portfolio, prices: dict) -> str:
+    return (f"📊 Сводка: equity ${pf.equity(prices):.2f} | "
+            f"реализовано ${pf.realized_pnl:+.2f} | "
+            f"нереализовано ${pf.unrealized_pnl(prices):+.2f} | "
+            f"открыто позиций {len(pf.positions)} | сделок {len(pf.trades)}.")
 
 
 def run_once(
@@ -67,18 +138,20 @@ def run_once(
     pf: Portfolio,
     seen_news: set[str],
     traded_keys: dict[str, float],
+    alerts: dict | None = None,
     *,
     market_fetcher: MarketFetcher | None = None,
     sources: list | None = None,
     scorer=None,
     live_broker=None,
+    notifier=None,
     log: Callable[[str], None] = print,
 ) -> list:
-    """One full cycle. Mutates pf/seen_news/traded_keys in place.
-
-    Returns the list of executed paper trades.
-    """
+    """One full cycle. Mutates pf/seen_news/traded_keys/alerts in place."""
     market_fetcher = market_fetcher or _default_market_fetcher
+    notifier = notifier or NullNotifier()
+    if alerts is None:
+        alerts = {}
     if sources is None:
         sources = sources_mod.build_sources(cfg)
 
@@ -87,13 +160,11 @@ def run_once(
         log("  no watched markets resolved (empty watchlist?)")
         return []
 
-    broker = PaperBroker(
-        pf, fee_bps=cfg.fee_bps, slippage_bps=cfg.slippage_bps,
-        max_position_usd=cfg.max_position_usd,
-    )
+    broker = PaperBroker(pf, fee_bps=cfg.fee_bps, slippage_bps=cfg.slippage_bps,
+                         max_position_usd=cfg.max_position_usd)
 
-    # Settle anything that has resolved since last cycle.
-    maybe_resolve(pf, markets, broker, log)
+    maybe_resolve(pf, markets, broker, notifier, log)
+    manage_positions(cfg, pf, markets, broker, notifier, alerts, log)
 
     items = sources_mod.fetch_all(sources)
     fresh = [n for n in items if n.uid not in seen_news]
@@ -110,6 +181,8 @@ def run_once(
 
     executed = []
     now = time.time()
+    plan = (f"План выхода: тейк +{cfg.take_profit_pct * 100:.0f}%, "
+            f"стоп −{cfg.stop_loss_pct * 100:.0f}%, или фиксация у разрешения.")
     for sig in signals:
         out_key = f"{sig.market.id}:{sig.outcome_index}"
         if now - traded_keys.get(out_key, 0.0) < cfg.cooldown_sec:
@@ -121,13 +194,14 @@ def run_once(
             continue
         traded_keys[out_key] = now
         executed.append(trade)
-        log(
-            f"  BUY {trade.shares:.1f} '{trade.outcome_name}' @ {trade.price:.3f} "
-            f"(${trade.cost:.2f}) conf={sig.confidence:.2f} :: {sig.rationale}"
-        )
+        msg = (f"🟢 Беру ставку: «{trade.outcome_name}» @ {trade.price:.3f} "
+               f"(${trade.cost:.2f}) на «{sig.market.question[:60]}». "
+               f"Причина: {sig.rationale}. Уверенность {sig.confidence:.0%}. {plan}")
+        notifier.send(msg)
+        log("  " + msg)
         if live_broker is not None:
             result = live_broker.execute(sig, cfg.stake_usd, pf)
-            log(f"    live: {result.get('status')} - {result.get('reason', '')}".rstrip(" -"))
+            log(f"    live: {result.get('status')} {result.get('reason', '')}".rstrip())
 
     for n in fresh:
         seen_news.add(n.uid)
@@ -138,12 +212,10 @@ def run_once(
         f"unreal=${pf.unrealized_pnl(prices):+.2f} real=${pf.realized_pnl:+.2f} "
         f"positions={len(pf.positions)} trades={len(pf.trades)}"
     )
+
+    # periodic heartbeat summary
+    if now - float(alerts.get("_last_heartbeat", 0.0)) >= cfg.notify_heartbeat_sec:
+        alerts["_last_heartbeat"] = now
+        notifier.send(_summary(pf, prices))
+
     return executed
-
-
-def markets_price(markets: dict[str, Market], pos) -> float:
-    """Current price for a held position, falling back to its avg price."""
-    for m in markets.values():
-        if m.id == pos.market_id and pos.outcome_index < len(m.prices):
-            return m.prices[pos.outcome_index]
-    return pos.avg_price

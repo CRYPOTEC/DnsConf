@@ -31,6 +31,15 @@ DEFAULTS = {
     # --- loop ---
     "poll_interval_sec": 120,
 
+    # --- position management / exits ---
+    "take_profit_pct": 0.5,        # close a position at +50% vs entry
+    "stop_loss_pct": 0.5,          # close a position at -50% vs entry
+    "exit_price_above": 0.97,      # lock the gain when the outcome is near-certain
+
+    # --- notifications (Telegram via env, console fallback) ---
+    "notify_gain_tiers": [0.2, 0.5, 1.0],  # alert when a position crosses each
+    "notify_heartbeat_sec": 3600,          # periodic portfolio summary
+
     # --- signal strategy ---
     # "keyword" (deterministic, offline) or "llm" (Claude-scored, needs key).
     "strategy": "keyword",
@@ -87,6 +96,11 @@ class Config:
     slippage_bps: float
     cooldown_sec: int
     poll_interval_sec: int
+    take_profit_pct: float
+    stop_loss_pct: float
+    exit_price_above: float
+    notify_gain_tiers: list[float]
+    notify_heartbeat_sec: int
     strategy: str
     llm_model: str
     llm_effort: str
@@ -122,6 +136,11 @@ class Config:
             slippage_bps=float(data["slippage_bps"]),
             cooldown_sec=int(data["cooldown_sec"]),
             poll_interval_sec=int(data["poll_interval_sec"]),
+            take_profit_pct=float(data["take_profit_pct"]),
+            stop_loss_pct=float(data["stop_loss_pct"]),
+            exit_price_above=float(data["exit_price_above"]),
+            notify_gain_tiers=[float(x) for x in data["notify_gain_tiers"]],
+            notify_heartbeat_sec=int(data["notify_heartbeat_sec"]),
             strategy=str(data["strategy"]),
             llm_model=str(data["llm_model"]),
             llm_effort=str(data["llm_effort"]),

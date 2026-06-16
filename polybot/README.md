@@ -22,6 +22,11 @@
    (честный P&L); офлайн-бэктест прогоняет сохранённый датасет.
 4. **Лайв-исполнение** (CLOB) — отдельный модуль с жёсткими предохранителями;
    по умолчанию выключен.
+5. **Управление позициями + Telegram** — тейк-профит / стоп-лосс / фиксация у
+   разрешения, алерты при росте (+20% / +50% / +100%), и уведомления в Telegram
+   о входах (с причиной и планом выхода), росте, выходах, разрешении и сводке.
+   Для круглосуточной работы — артефакты деплоя (systemd/Docker), см.
+   [DEPLOY.md](DEPLOY.md).
 
 > ⚠️ Контент новостей **недоверенный** (фейки, двусмысленность, prompt-injection
 > через текст новости). И keyword-, и LLM-стратегия написаны консервативно;
@@ -59,7 +64,11 @@ python -m polybot run --loop              # крутить постоянно
 python -m polybot status                  # портфель
 python -m polybot news --limit 20         # превью источников
 python -m polybot backtest --data examples/backtest_sample.json
+python -m polybot telegram-test           # проверить связь с Telegram / найти chat id
 ```
+
+Круглосуточный запуск (на постоянно включённом хосте) и подключение Telegram —
+в **[DEPLOY.md](DEPLOY.md)**.
 
 ## Конфиг (`config.json`)
 
@@ -132,12 +141,13 @@ sources/      RSS / NewsAPI / Twitter / websocket  (контент недове�
 polymarket.py Gamma API → Market (цены)            (только чтение)
 signals.py    detect (keyword) / detect_llm        (тестируемо)
 llm.py        Claude-оценка новости → Verdict       (опц., structured outputs)
-paper.py      Portfolio + PaperBroker              (симуляция, P&L)
-engine.py     цикл: sources→signals→trades→resolve
+paper.py      Portfolio + PaperBroker (buy/sell)   (симуляция, P&L)
+engine.py     цикл: resolve→manage→signals→trades→heartbeat
+notify.py     Telegram / console уведомления       (вход/рост/выход/сводка)
 backtest.py   офлайн-прогон датасета
 live.py       LiveBroker + ClobAdapter             (опц., предохранители)
-storage.py    state.json (рестарт не торгует дважды)
-cli.py        markets / news / run / status / backtest / init
+storage.py    state.json (портфель, seen-news, алерты)
+cli.py        markets / news / run / status / backtest / telegram-test / init
 ```
 
 ## Тесты
@@ -148,4 +158,4 @@ python -m unittest discover -s tests -v
 # или, если установлен pytest:
 pytest -q
 ```
-39 тестов, все офлайн (внешние зависимости подменяются фейками).
+49 тестов, все офлайн (внешние зависимости подменяются фейками).

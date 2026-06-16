@@ -7,6 +7,15 @@
   "slippage_bps": 50.0,
   "cooldown_sec": 3600,
   "poll_interval_sec": 300,
+  "take_profit_pct": 0.5,
+  "stop_loss_pct": 0.5,
+  "exit_price_above": 0.97,
+  "notify_gain_tiers": [
+    0.2,
+    0.5,
+    1.0
+  ],
+  "notify_heartbeat_sec": 3600,
   "strategy": "llm",
   "llm_model": "claude-opus-4-8",
   "llm_effort": "low",
@@ -211,18 +220,6 @@
       "bear_keywords": []
     },
     {
-      "slug": "strait-of-hormuz-traffic-returns-to-normal-by-june-15",
-      "match_keywords": [
-        "strait",
-        "hormuz",
-        "traffic",
-        "returns",
-        "normal"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
       "slug": "will-the-iranian-regime-fall-by-june-30",
       "match_keywords": [
         "iranian",
@@ -263,6 +260,30 @@
         "nchez",
         "presidential",
         "election"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "strait-of-hormuz-traffic-returns-to-normal-by-june-15",
+      "match_keywords": [
+        "strait",
+        "hormuz",
+        "traffic",
+        "returns",
+        "normal"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "will-the-fed-increase-interest-rates-by-50-bps-after-the-june-2026-meeting",
+      "match_keywords": [
+        "fed",
+        "increase",
+        "interest",
+        "rates",
+        "meeting"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -347,18 +368,6 @@
       "bear_keywords": []
     },
     {
-      "slug": "us-x-iran-permanent-peace-deal-by-august-31-2026",
-      "match_keywords": [
-        "us",
-        "iran",
-        "permanent",
-        "peace",
-        "deal"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
       "slug": "will-gina-raimondo-win-the-2028-democratic-presidential-nomination-676",
       "match_keywords": [
         "gina raimondo",
@@ -377,6 +386,18 @@
         "qatar",
         "diplomatic",
         "meeting"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "us-x-iran-permanent-peace-deal-by-august-31-2026",
+      "match_keywords": [
+        "us",
+        "iran",
+        "permanent",
+        "peace",
+        "deal"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -415,6 +436,19 @@
       "bear_keywords": []
     },
     {
+      "slug": "will-trump-agree-to-withdraw-troops-from-the-iranian-region-by-june-30",
+      "match_keywords": [
+        "trump",
+        "iranian",
+        "agree",
+        "withdraw",
+        "troops",
+        "region"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
       "slug": "will-the-next-diplomatic-us-iran-meeting-be-in-switzerland-861",
       "match_keywords": [
         "us",
@@ -438,19 +472,6 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-trump-agree-to-withdraw-troops-from-the-iranian-region-by-june-30",
-      "match_keywords": [
-        "trump",
-        "iranian",
-        "agree",
-        "withdraw",
-        "troops",
-        "region"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
       "slug": "israel-closes-its-airspace-by-june-30-324-253-464-332-827-713-671-846",
       "match_keywords": [
         "israel",
@@ -469,18 +490,6 @@
         "diplomatic",
         "meeting",
         "occur"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "will-the-fed-increase-interest-rates-by-50-bps-after-the-june-2026-meeting",
-      "match_keywords": [
-        "fed",
-        "increase",
-        "interest",
-        "rates",
-        "meeting"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -542,6 +551,17 @@
       "bear_keywords": []
     },
     {
+      "slug": "us-x-iran-diplomatic-meeting-by-june-21-2026-631-919-131-645-654-454-281-531-319-585-646",
+      "match_keywords": [
+        "us",
+        "iran",
+        "diplomatic",
+        "meeting"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
       "slug": "us-x-iran-diplomatic-meeting-by-june-19-2026-475",
       "match_keywords": [
         "us",
@@ -559,17 +579,6 @@
         "confirm",
         "aliens",
         "exist"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "us-x-iran-diplomatic-meeting-by-june-21-2026-631-919-131-645-654-454-281-531-319-585-646",
-      "match_keywords": [
-        "us",
-        "iran",
-        "diplomatic",
-        "meeting"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -622,6 +631,18 @@
       "bear_keywords": []
     },
     {
+      "slug": "will-the-fed-decrease-interest-rates-by-25-bps-after-the-july-2026-meeting",
+      "match_keywords": [
+        "fed",
+        "decrease",
+        "interest",
+        "rates",
+        "meeting"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
       "slug": "elon-musk-of-tweets-june-15-june-17-90-114",
       "match_keywords": [
         "elon musk",
@@ -639,6 +660,19 @@
         "pakistan",
         "diplomatic",
         "meeting"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "will-the-next-diplomatic-us-iran-meeting-be-in-another-european-country-641",
+      "match_keywords": [
+        "us",
+        "iran",
+        "european",
+        "diplomatic",
+        "meeting",
+        "country"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -666,50 +700,13 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-the-next-diplomatic-us-iran-meeting-be-in-another-european-country-641",
+      "slug": "will-the-text-of-the-us-iran-agreement-be-released-by-june-16-20260615224555000",
       "match_keywords": [
         "us",
         "iran",
-        "european",
-        "diplomatic",
-        "meeting",
-        "country"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "will-the-fed-decrease-interest-rates-by-25-bps-after-the-july-2026-meeting",
-      "match_keywords": [
-        "fed",
-        "decrease",
-        "interest",
-        "rates",
-        "meeting"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "us-obtains-iranian-enriched-uranium-by-june-30",
-      "match_keywords": [
-        "us",
-        "iranian",
-        "obtains",
-        "enriched",
-        "uranium"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "strait-of-hormuz-traffic-returns-to-normal-by-december-31",
-      "match_keywords": [
-        "strait",
-        "hormuz",
-        "traffic",
-        "returns",
-        "normal"
+        "text",
+        "agreement",
+        "released"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -728,13 +725,13 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-the-text-of-the-us-iran-agreement-be-released-by-june-16-20260615224555000",
+      "slug": "strait-of-hormuz-traffic-returns-to-normal-by-december-31",
       "match_keywords": [
-        "us",
-        "iran",
-        "text",
-        "agreement",
-        "released"
+        "strait",
+        "hormuz",
+        "traffic",
+        "returns",
+        "normal"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -791,6 +788,15 @@
       "bear_keywords": []
     },
     {
+      "slug": "will-michelle-obama-win-the-2028-us-presidential-election",
+      "match_keywords": [
+        "michelle obama",
+        "us presidential election"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
       "slug": "israel-withdraws-from-lebanon-by-july-31-2026",
       "match_keywords": [
         "israel",
@@ -801,20 +807,12 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-michelle-obama-win-the-2028-us-presidential-election",
+      "slug": "us-x-iran-diplomatic-meeting-by-june-17-2026-20260612163100185-516-841",
       "match_keywords": [
-        "michelle obama",
-        "us presidential election"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "will-avigdor-lieberman-be-the-next-prime-minister-of-israel",
-      "match_keywords": [
-        "avigdor lieberman",
-        "prime minister",
-        "israel"
+        "us",
+        "iran",
+        "diplomatic",
+        "meeting"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -825,17 +823,6 @@
         "us",
         "iran",
         "oman",
-        "diplomatic",
-        "meeting"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "us-x-iran-diplomatic-meeting-by-june-17-2026-20260612163100185-516-841",
-      "match_keywords": [
-        "us",
-        "iran",
         "diplomatic",
         "meeting"
       ],
@@ -863,13 +850,11 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-the-fed-increase-interest-rates-by-25-bps-after-the-july-2026-meeting",
+      "slug": "will-avigdor-lieberman-be-the-next-prime-minister-of-israel",
       "match_keywords": [
-        "fed",
-        "increase",
-        "interest",
-        "rates",
-        "meeting"
+        "avigdor lieberman",
+        "prime minister",
+        "israel"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -898,6 +883,18 @@
       "bear_keywords": []
     },
     {
+      "slug": "will-the-fed-increase-interest-rates-by-25-bps-after-the-july-2026-meeting",
+      "match_keywords": [
+        "fed",
+        "increase",
+        "interest",
+        "rates",
+        "meeting"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
       "slug": "will-fujimori-win-the-2nd-round-of-the-2026-peru-presidential-election-by-0pt40pt5-20260609021542082",
       "match_keywords": [
         "fujimori",
@@ -921,17 +918,6 @@
       "bear_keywords": []
     },
     {
-      "slug": "us-x-russia-military-clash-by-december-31-2026-775",
-      "match_keywords": [
-        "us",
-        "russia",
-        "military",
-        "clash"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
       "slug": "will-pete-hegseth-win-the-2028-republican-presidential-nomination",
       "match_keywords": [
         "pete hegseth",
@@ -943,11 +929,11 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-benjamin-netanyahu-be-the-next-prime-minister-of-israel",
+      "slug": "elon-musk-of-tweets-june-15-june-17-40-64",
       "match_keywords": [
-        "benjamin netanyahu",
-        "prime minister",
-        "israel"
+        "elon musk",
+        "post",
+        "tweets"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -965,11 +951,22 @@
       "bear_keywords": []
     },
     {
-      "slug": "elon-musk-of-tweets-june-15-june-17-40-64",
+      "slug": "will-benjamin-netanyahu-be-the-next-prime-minister-of-israel",
       "match_keywords": [
-        "elon musk",
-        "post",
-        "tweets"
+        "benjamin netanyahu",
+        "prime minister",
+        "israel"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "us-x-russia-military-clash-by-december-31-2026-775",
+      "match_keywords": [
+        "us",
+        "russia",
+        "military",
+        "clash"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -1008,22 +1005,22 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-andy-burnham-win-the-2026-makerfield-by-election",
-      "match_keywords": [
-        "andy burnham",
-        "makerfield",
-        "election"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
       "slug": "kharg-island-no-longer-under-iranian-control-by-june-24",
       "match_keywords": [
         "kharg island",
         "iranian",
         "longer",
         "control"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "will-andy-burnham-win-the-2026-makerfield-by-election",
+      "match_keywords": [
+        "andy burnham",
+        "makerfield",
+        "election"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -1082,6 +1079,18 @@
       "bear_keywords": []
     },
     {
+      "slug": "trump-announces-us-x-iran-ceasefire-over-by-june-30-20260607232556276-219",
+      "match_keywords": [
+        "trump",
+        "us",
+        "iran",
+        "announces",
+        "ceasefire"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
       "slug": "starmer-out-by-june-30-2026-862-594-548-219-739",
       "match_keywords": [
         "starmer"
@@ -1096,18 +1105,6 @@
         "democratic",
         "presidential",
         "nomination"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "trump-announces-us-x-iran-ceasefire-over-by-june-30-20260607232556276-219",
-      "match_keywords": [
-        "trump",
-        "us",
-        "iran",
-        "announces",
-        "ceasefire"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -1145,23 +1142,23 @@
       "bear_keywords": []
     },
     {
-      "slug": "china-x-taiwan-military-clash-before-2027",
-      "match_keywords": [
-        "china",
-        "taiwan",
-        "military",
-        "clash"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
       "slug": "will-nasir-hosseini-be-head-of-state-in-iran-end-of-2026",
       "match_keywords": [
         "nasir hosseini",
         "iran",
         "head",
         "state"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "china-x-taiwan-military-clash-before-2027",
+      "match_keywords": [
+        "china",
+        "taiwan",
+        "military",
+        "clash"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -1261,10 +1258,13 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-steve-hilton-win-the-california-governor-election-in-2026",
+      "slug": "us-obtains-iranian-enriched-uranium-by-june-30",
       "match_keywords": [
-        "steve hilton",
-        "california governor election"
+        "us",
+        "iranian",
+        "obtains",
+        "enriched",
+        "uranium"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -1283,6 +1283,15 @@
       "bear_keywords": []
     },
     {
+      "slug": "will-steve-hilton-win-the-california-governor-election-in-2026",
+      "match_keywords": [
+        "steve hilton",
+        "california governor election"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
       "slug": "will-kristi-noem-win-the-2028-republican-presidential-nomination",
       "match_keywords": [
         "kristi noem",
@@ -1294,13 +1303,12 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-mohammad-bagher-ghalibaf-be-head-of-state-in-iran-end-of-2026",
+      "slug": "2026-balance-of-power-r-senate-r-house-537",
       "match_keywords": [
-        "mohammad",
-        "bagher ghalibaf",
-        "iran",
-        "head",
-        "state"
+        "balance",
+        "power",
+        "senate",
+        "house"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -1348,12 +1356,10 @@
       "bear_keywords": []
     },
     {
-      "slug": "2026-balance-of-power-r-senate-r-house-537",
+      "slug": "will-jd-vance-win-the-2028-us-presidential-election",
       "match_keywords": [
-        "balance",
-        "power",
-        "senate",
-        "house"
+        "jd vance",
+        "us presidential election"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -1392,15 +1398,6 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-jd-vance-win-the-2028-us-presidential-election",
-      "match_keywords": [
-        "jd vance",
-        "us presidential election"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
       "slug": "will-helder-barbalho-win-the-2026-brazilian-presidential-election",
       "match_keywords": [
         "helder barbalho",
@@ -1430,15 +1427,6 @@
         "iran",
         "head",
         "state"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "will-elon-musk-win-the-2028-us-presidential-election",
-      "match_keywords": [
-        "elon musk",
-        "us presidential election"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -1538,22 +1526,22 @@
       "bear_keywords": []
     },
     {
-      "slug": "elon-musk-of-tweets-june-12-june-19-140-159",
-      "match_keywords": [
-        "elon musk",
-        "post",
-        "tweets"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
       "slug": "will-mathilde-panot-win-the-2027-french-presidential-election",
       "match_keywords": [
         "mathilde panot",
         "french",
         "presidential",
         "election"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "elon-musk-of-tweets-june-12-june-19-140-159",
+      "match_keywords": [
+        "elon musk",
+        "post",
+        "tweets"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -1593,6 +1581,27 @@
       "bear_keywords": []
     },
     {
+      "slug": "will-elon-musk-win-the-2028-us-presidential-election",
+      "match_keywords": [
+        "elon musk",
+        "us presidential election"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "will-mohammad-bagher-ghalibaf-be-head-of-state-in-iran-end-of-2026",
+      "match_keywords": [
+        "mohammad",
+        "bagher ghalibaf",
+        "iran",
+        "head",
+        "state"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
       "slug": "will-there-be-no-change-in-fed-interest-rates-after-the-july-2026-meeting",
       "match_keywords": [
         "fed",
@@ -1616,6 +1625,16 @@
       "bear_keywords": []
     },
     {
+      "slug": "elon-musk-of-tweets-june-15-june-17-65-89",
+      "match_keywords": [
+        "elon musk",
+        "post",
+        "tweets"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
       "slug": "will-eduardo-leite-win-the-2026-brazilian-presidential-election",
       "match_keywords": [
         "eduardo leite",
@@ -1627,11 +1646,12 @@
       "bear_keywords": []
     },
     {
-      "slug": "elon-musk-of-tweets-june-15-june-17-65-89",
+      "slug": "will-george-clooney-win-the-2028-democratic-presidential-nomination",
       "match_keywords": [
-        "elon musk",
-        "post",
-        "tweets"
+        "george clooney",
+        "democratic",
+        "presidential",
+        "nomination"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -1660,12 +1680,13 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-george-clooney-win-the-2028-democratic-presidential-nomination",
+      "slug": "will-the-text-of-the-us-iran-agreement-be-released-by-june-17-20260615191216216",
       "match_keywords": [
-        "george clooney",
-        "democratic",
-        "presidential",
-        "nomination"
+        "us",
+        "iran",
+        "text",
+        "agreement",
+        "released"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -1733,18 +1754,6 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-the-text-of-the-us-iran-agreement-be-released-by-june-17-20260615191216216",
-      "match_keywords": [
-        "us",
-        "iran",
-        "text",
-        "agreement",
-        "released"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
       "slug": "will-manuel-bompard-win-the-2027-french-presidential-election",
       "match_keywords": [
         "manuel bompard",
@@ -1804,33 +1813,20 @@
       "bear_keywords": []
     },
     {
-      "slug": "xi-jinping-out-before-2027",
-      "match_keywords": [
-        "xi jinping"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "iran-agrees-to-unrestricted-shipping-through-hormuz-by-june-30",
-      "match_keywords": [
-        "iran",
-        "hormuz",
-        "agrees",
-        "unrestricted",
-        "shipping",
-        "through"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
       "slug": "will-tim-walz-win-the-2028-democratic-presidential-nomination-475",
       "match_keywords": [
         "tim walz",
         "democratic",
         "presidential",
         "nomination"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "xi-jinping-out-before-2027",
+      "match_keywords": [
+        "xi jinping"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -1857,12 +1853,36 @@
       "bear_keywords": []
     },
     {
+      "slug": "iran-agrees-to-unrestricted-shipping-through-hormuz-by-june-30",
+      "match_keywords": [
+        "iran",
+        "hormuz",
+        "agrees",
+        "unrestricted",
+        "shipping",
+        "through"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
       "slug": "will-john-fetterman-win-the-2028-democratic-presidential-nomination-941",
       "match_keywords": [
         "john fetterman",
         "democratic",
         "presidential",
         "nomination"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "will-spencer-pratt-win-the-2026-los-angeles-mayoral-election-983",
+      "match_keywords": [
+        "spencer pratt",
+        "los angeles",
+        "mayoral",
+        "election"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -2110,22 +2130,20 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-bernie-sanders-win-the-2028-democratic-presidential-nomination-879",
-      "match_keywords": [
-        "bernie sanders",
-        "democratic",
-        "presidential",
-        "nomination"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
       "slug": "will-amir-ohana-be-the-next-prime-minister-of-israel",
       "match_keywords": [
         "amir ohana",
         "prime minister",
         "israel"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "will-kim-kardashian-win-the-2028-us-presidential-election",
+      "match_keywords": [
+        "kim kardashian",
+        "us presidential election"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -2141,10 +2159,12 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-kim-kardashian-win-the-2028-us-presidential-election",
+      "slug": "will-bernie-sanders-win-the-2028-democratic-presidential-nomination-879",
       "match_keywords": [
-        "kim kardashian",
-        "us presidential election"
+        "bernie sanders",
+        "democratic",
+        "presidential",
+        "nomination"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -2176,21 +2196,21 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-alexandria-ocasio-cortez-win-the-2028-us-presidential-election",
-      "match_keywords": [
-        "alexandria ocasio",
-        "cortez",
-        "us presidential election"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
       "slug": "will-trump-acquire-greenland-before-2027",
       "match_keywords": [
         "trump",
         "greenland",
         "acquire"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "will-alexandria-ocasio-cortez-win-the-2028-us-presidential-election",
+      "match_keywords": [
+        "alexandria ocasio",
+        "cortez",
+        "us presidential election"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -2211,16 +2231,6 @@
       "match_keywords": [
         "eric trump",
         "us presidential election"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "will-russia-capture-all-of-kupiansk-by-june-30",
-      "match_keywords": [
-        "russia",
-        "kupiansk",
-        "capture"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -2292,6 +2302,16 @@
       "bear_keywords": []
     },
     {
+      "slug": "will-russia-capture-all-of-kupiansk-by-june-30",
+      "match_keywords": [
+        "russia",
+        "kupiansk",
+        "capture"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
       "slug": "will-the-democrats-win-the-maine-senate-race-in-2026",
       "match_keywords": [
         "democrats",
@@ -2358,21 +2378,21 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-vivek-ramaswamy-win-the-2028-us-presidential-election",
-      "match_keywords": [
-        "vivek ramaswamy",
-        "us presidential election"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
       "slug": "will-ruben-gallego-win-the-2028-democratic-presidential-nomination",
       "match_keywords": [
         "ruben gallego",
         "democratic",
         "presidential",
         "nomination"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "will-vivek-ramaswamy-win-the-2028-us-presidential-election",
+      "match_keywords": [
+        "vivek ramaswamy",
+        "us presidential election"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -2410,16 +2430,6 @@
       "bear_keywords": []
     },
     {
-      "slug": "israel-strike-on-yemen-by-june-30-2026-285-633-267-857",
-      "match_keywords": [
-        "israel",
-        "yemen",
-        "strike"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
       "slug": "will-clmentine-autain-win-the-2027-french-presidential-election",
       "match_keywords": [
         "cl",
@@ -2433,12 +2443,11 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-laurent-wauquiez-win-the-2027-french-presidential-election",
+      "slug": "israel-strike-on-yemen-by-june-30-2026-285-633-267-857",
       "match_keywords": [
-        "laurent wauquiez",
-        "french",
-        "presidential",
-        "election"
+        "israel",
+        "yemen",
+        "strike"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -2459,6 +2468,28 @@
         "cuban",
         "regime",
         "falls"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "will-laurent-wauquiez-win-the-2027-french-presidential-election",
+      "match_keywords": [
+        "laurent wauquiez",
+        "french",
+        "presidential",
+        "election"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "will-eduardo-bolsonaro-win-the-2026-brazilian-presidential-election",
+      "match_keywords": [
+        "eduardo bolsonaro",
+        "brazilian",
+        "presidential",
+        "election"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -2491,17 +2522,6 @@
         "head",
         "state",
         "iran"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "will-eduardo-bolsonaro-win-the-2026-brazilian-presidential-election",
-      "match_keywords": [
-        "eduardo bolsonaro",
-        "brazilian",
-        "presidential",
-        "election"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -2731,6 +2751,16 @@
       "bear_keywords": []
     },
     {
+      "slug": "pete-hegseth-out-as-secretary-of-defense-by-june-30",
+      "match_keywords": [
+        "pete hegseth",
+        "secretary",
+        "defense"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
       "slug": "will-zohran-mamdani-win-the-2028-democratic-presidential-nomination-445",
       "match_keywords": [
         "zohran mamdani",
@@ -2762,27 +2792,6 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-spencer-pratt-win-the-2026-los-angeles-mayoral-election-983",
-      "match_keywords": [
-        "spencer pratt",
-        "los angeles",
-        "mayoral",
-        "election"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "pete-hegseth-out-as-secretary-of-defense-by-june-30",
-      "match_keywords": [
-        "pete hegseth",
-        "secretary",
-        "defense"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
       "slug": "mojtaba-khamenei-leaves-iran-by-june-30-2026",
       "match_keywords": [
         "mojtaba khamenei",
@@ -2801,37 +2810,6 @@
         "attend",
         "diplomatic",
         "meeting"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "iran-leadership-change-by-december-31-974-976-658-482-568",
-      "match_keywords": [
-        "iran",
-        "leadership",
-        "change"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "will-josh-shapiro-win-the-2028-democratic-presidential-nomination-977",
-      "match_keywords": [
-        "josh shapiro",
-        "democratic",
-        "presidential",
-        "nomination"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "will-gadi-eizenkot-be-the-next-prime-minister-of-israel",
-      "match_keywords": [
-        "gadi eizenkot",
-        "prime minister",
-        "israel"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -2881,6 +2859,17 @@
       "bear_keywords": []
     },
     {
+      "slug": "will-aldo-rebelo-win-the-2026-brazilian-presidential-election",
+      "match_keywords": [
+        "aldo rebelo",
+        "brazilian",
+        "presidential",
+        "election"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
       "slug": "will-luiz-incio-lula-da-silva-win-the-2026-brazilian-presidential-election",
       "match_keywords": [
         "luiz in",
@@ -2889,6 +2878,18 @@
         "brazilian",
         "presidential",
         "election"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "will-the-republican-party-control-the-house-after-the-2026-midterm-elections",
+      "match_keywords": [
+        "republican party",
+        "house",
+        "midterm",
+        "control",
+        "elections"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -2930,34 +2931,13 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-aldo-rebelo-win-the-2026-brazilian-presidential-election",
+      "slug": "will-flvio-bolsonaro-win-the-2026-brazilian-presidential-election",
       "match_keywords": [
-        "aldo rebelo",
+        "fl",
+        "bolsonaro",
         "brazilian",
         "presidential",
         "election"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "elon-musk-of-tweets-june-15-june-17-140-164",
-      "match_keywords": [
-        "elon musk",
-        "post",
-        "tweets"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "will-the-republican-party-control-the-house-after-the-2026-midterm-elections",
-      "match_keywords": [
-        "republican party",
-        "house",
-        "midterm",
-        "control",
-        "elections"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -2968,18 +2948,6 @@
         "fujimori",
         "peru",
         "round",
-        "presidential",
-        "election"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "will-flvio-bolsonaro-win-the-2026-brazilian-presidential-election",
-      "match_keywords": [
-        "fl",
-        "bolsonaro",
-        "brazilian",
         "presidential",
         "election"
       ],
@@ -2999,11 +2967,12 @@
       "bear_keywords": []
     },
     {
-      "slug": "elon-musk-of-tweets-june-15-june-17-165-189",
+      "slug": "will-josh-shapiro-win-the-2028-democratic-presidential-nomination-977",
       "match_keywords": [
-        "elon musk",
-        "post",
-        "tweets"
+        "josh shapiro",
+        "democratic",
+        "presidential",
+        "nomination"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -3014,16 +2983,6 @@
         "russia",
         "ukraine",
         "ceasefire"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "iran-leadership-change-by-june-30-689-922",
-      "match_keywords": [
-        "iran",
-        "leadership",
-        "change"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -3046,16 +3005,6 @@
         "republican",
         "presidential",
         "nomination"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "elon-musk-of-tweets-june-16-june-23-60-79",
-      "match_keywords": [
-        "elon musk",
-        "post",
-        "tweets"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -3086,23 +3035,11 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-romeu-zema-win-the-2026-brazilian-presidential-election",
+      "slug": "elon-musk-of-tweets-june-15-june-17-140-164",
       "match_keywords": [
-        "romeu zema",
-        "brazilian",
-        "presidential",
-        "election"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "will-person-a-win-the-2028-democratic-presidential-nomination",
-      "match_keywords": [
-        "hunter biden",
-        "democratic",
-        "presidential",
-        "nomination"
+        "elon musk",
+        "post",
+        "tweets"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -3124,6 +3061,36 @@
         "mandeb strait",
         "effectively",
         "closed"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "elon-musk-of-tweets-june-15-june-17-165-189",
+      "match_keywords": [
+        "elon musk",
+        "post",
+        "tweets"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "iran-leadership-change-by-december-31-974-976-658-482-568",
+      "match_keywords": [
+        "iran",
+        "leadership",
+        "change"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "iran-leadership-change-by-june-30-689-922",
+      "match_keywords": [
+        "iran",
+        "leadership",
+        "change"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -3159,6 +3126,16 @@
       "bear_keywords": []
     },
     {
+      "slug": "elon-musk-of-tweets-june-16-june-23-60-79",
+      "match_keywords": [
+        "elon musk",
+        "post",
+        "tweets"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
       "slug": "putin-out-as-president-of-russia-by-june-30",
       "match_keywords": [
         "putin",
@@ -3180,12 +3157,44 @@
       "bear_keywords": []
     },
     {
+      "slug": "will-person-a-win-the-2028-democratic-presidential-nomination",
+      "match_keywords": [
+        "hunter biden",
+        "democratic",
+        "presidential",
+        "nomination"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
       "slug": "will-20-ships-transit-the-strait-of-hormuz-on-any-day-by-june-30-2026",
       "match_keywords": [
         "strait",
         "hormuz",
         "ships",
         "transit"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "will-gadi-eizenkot-be-the-next-prime-minister-of-israel",
+      "match_keywords": [
+        "gadi eizenkot",
+        "prime minister",
+        "israel"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "will-romeu-zema-win-the-2026-brazilian-presidential-election",
+      "match_keywords": [
+        "romeu zema",
+        "brazilian",
+        "presidential",
+        "election"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -3380,6 +3389,16 @@
       "bear_keywords": []
     },
     {
+      "slug": "will-diosdado-cabello-rondn-be-the-leader-of-venezuela-end-of-2026",
+      "match_keywords": [
+        "diosdado cabello rond",
+        "venezuela",
+        "leader"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
       "slug": "iran-agrees-to-end-enrichment-of-uranium-by-december-31",
       "match_keywords": [
         "iran",
@@ -3396,16 +3415,6 @@
         "elon musk",
         "post",
         "tweets"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "will-diosdado-cabello-rondn-be-the-leader-of-venezuela-end-of-2026",
-      "match_keywords": [
-        "diosdado cabello rond",
-        "venezuela",
-        "leader"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -3473,6 +3482,16 @@
       "bear_keywords": []
     },
     {
+      "slug": "will-crude-oil-reach-a-new-all-time-high-by-september-30",
+      "match_keywords": [
+        "crude oil",
+        "time",
+        "high"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
       "slug": "will-donald-trump-win-the-2028-republican-presidential-nomination",
       "match_keywords": [
         "donald trump",
@@ -3484,14 +3503,12 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-abelardo-de-la-espriella-win-the-second-round-of-the-2026-colombian-presidential-election-by-5-10-20260605193429336",
+      "slug": "will-dwayne-the-rock-johnson-win-the-2028-us-presidential-election",
       "match_keywords": [
-        "abelardo",
-        "espriella",
-        "colombian",
-        "round",
-        "presidential",
-        "election"
+        "dwayne",
+        "rock",
+        "johnson",
+        "us presidential election"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -3500,17 +3517,6 @@
       "slug": "will-ivanka-trump-win-the-2028-us-presidential-election",
       "match_keywords": [
         "ivanka trump",
-        "us presidential election"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "will-dwayne-the-rock-johnson-win-the-2028-us-presidential-election",
-      "match_keywords": [
-        "dwayne",
-        "rock",
-        "johnson",
         "us presidential election"
       ],
       "bull_keywords": [],
@@ -3555,6 +3561,19 @@
       "bear_keywords": []
     },
     {
+      "slug": "will-abelardo-de-la-espriella-place-1st-in-bogota-in-the-second-round-of-the-2026-colombia-presidential-election-20260604170547991",
+      "match_keywords": [
+        "abelardo",
+        "espriella",
+        "bogot",
+        "colombia",
+        "place",
+        "round"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
       "slug": "will-russia-capture-kostyantynivka-by-june-30-382-954-769",
       "match_keywords": [
         "russia",
@@ -3578,23 +3597,14 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-abelardo-de-la-espriella-place-1st-in-bogota-in-the-second-round-of-the-2026-colombia-presidential-election-20260604170547991",
+      "slug": "will-abelardo-de-la-espriella-win-the-second-round-of-the-2026-colombian-presidential-election-by-5-10-20260605193429336",
       "match_keywords": [
         "abelardo",
         "espriella",
-        "bogot",
-        "colombia",
-        "place",
-        "round"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "clarity-act-signed-into-law-in-2026",
-      "match_keywords": [
-        "clarity act",
-        "signed"
+        "colombian",
+        "round",
+        "presidential",
+        "election"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -3709,16 +3719,6 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-crude-oil-reach-a-new-all-time-high-by-september-30",
-      "match_keywords": [
-        "crude oil",
-        "time",
-        "high"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
       "slug": "will-wes-moore-win-the-2028-us-presidential-election",
       "match_keywords": [
         "wes moore",
@@ -3733,18 +3733,6 @@
         "reza pahlavi",
         "iran",
         "enter"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "will-shehbaz-sharif-sign-a-uptspt-x-iran-deal-by-july-31-20260611235950081",
-      "match_keywords": [
-        "shehbaz sharif",
-        "u.s.",
-        "iran",
-        "sign",
-        "deal"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -3770,6 +3758,18 @@
       "bear_keywords": []
     },
     {
+      "slug": "will-shehbaz-sharif-sign-a-uptspt-x-iran-deal-by-july-31-20260611235950081",
+      "match_keywords": [
+        "shehbaz sharif",
+        "u.s.",
+        "iran",
+        "sign",
+        "deal"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
       "slug": "will-marco-rubio-attend-the-next-us-x-iran-diplomatic-meeting",
       "match_keywords": [
         "marco rubio",
@@ -3778,16 +3778,6 @@
         "attend",
         "diplomatic",
         "meeting"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "elon-musk-of-tweets-june-16-june-23-120-139",
-      "match_keywords": [
-        "elon musk",
-        "post",
-        "tweets"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -3813,6 +3803,15 @@
       "bear_keywords": []
     },
     {
+      "slug": "clarity-act-signed-into-law-in-2026",
+      "match_keywords": [
+        "clarity act",
+        "signed"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
       "slug": "will-israel-and-lebanon-hold-a-diplomatic-meeting-by-june-30-2026-20260607225940217-843",
       "match_keywords": [
         "israel",
@@ -3825,20 +3824,21 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-russia-capture-kostyantynivka-by-december-31-2026-936-942-271-276-578-687",
+      "slug": "elon-musk-of-tweets-june-16-june-23-120-139",
       "match_keywords": [
-        "russia",
-        "kostyantynivka",
-        "capture"
+        "elon musk",
+        "post",
+        "tweets"
       ],
       "bull_keywords": [],
       "bear_keywords": []
     },
     {
-      "slug": "will-stephen-smith-win-the-2028-us-presidential-election",
+      "slug": "will-russia-capture-kostyantynivka-by-december-31-2026-936-942-271-276-578-687",
       "match_keywords": [
-        "stephen smith",
-        "us presidential election"
+        "russia",
+        "kostyantynivka",
+        "capture"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -3856,6 +3856,15 @@
       "bear_keywords": []
     },
     {
+      "slug": "will-stephen-smith-win-the-2028-us-presidential-election",
+      "match_keywords": [
+        "stephen smith",
+        "us presidential election"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
       "slug": "will-israeli-forces-withdraw-from-beyond-the-litani-river-by-june-30-20260607234650335",
       "match_keywords": [
         "israeli",
@@ -3863,17 +3872,6 @@
         "forces",
         "withdraw",
         "beyond"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "will-mara-corina-machado-be-the-leader-of-venezuela-end-of-2026",
-      "match_keywords": [
-        "mar",
-        "corina machado",
-        "venezuela",
-        "leader"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -3890,18 +3888,6 @@
       "bear_keywords": []
     },
     {
-      "slug": "us-obtains-iranian-enriched-uranium-by-july-31-20260610164403871",
-      "match_keywords": [
-        "us",
-        "iranian",
-        "obtains",
-        "enriched",
-        "uranium"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
       "slug": "will-fernando-haddad-win-the-2026-brazilian-presidential-election",
       "match_keywords": [
         "fernando haddad",
@@ -3913,7 +3899,18 @@
       "bear_keywords": []
     },
     {
-      "slug": "us-obtains-iranian-enriched-uranium-by-december-31-725-733",
+      "slug": "will-mara-corina-machado-be-the-leader-of-venezuela-end-of-2026",
+      "match_keywords": [
+        "mar",
+        "corina machado",
+        "venezuela",
+        "leader"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "us-obtains-iranian-enriched-uranium-by-july-31-20260610164403871",
       "match_keywords": [
         "us",
         "iranian",
@@ -3936,17 +3933,6 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-60-ships-transit-the-strait-of-hormuz-on-any-day-by-june-30-2026",
-      "match_keywords": [
-        "strait",
-        "hormuz",
-        "ships",
-        "transit"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
       "slug": "will-yoaz-hendel-be-the-next-prime-minister-of-israel",
       "match_keywords": [
         "yoaz hendel",
@@ -3964,6 +3950,17 @@
         "germany",
         "iran",
         "strike"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "will-60-ships-transit-the-strait-of-hormuz-on-any-day-by-june-30-2026",
+      "match_keywords": [
+        "strait",
+        "hormuz",
+        "ships",
+        "transit"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -4099,6 +4096,16 @@
       "bear_keywords": []
     },
     {
+      "slug": "mojtaba-khamenei-seen-in-public-by-july-31",
+      "match_keywords": [
+        "mojtaba khamenei",
+        "seen",
+        "public"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
       "slug": "will-steve-witkoff-sign-a-uptspt-x-iran-deal-by-july-31-20260611235950071",
       "match_keywords": [
         "steve witkoff",
@@ -4106,16 +4113,6 @@
         "iran",
         "sign",
         "deal"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "mojtaba-khamenei-seen-in-public-by-july-31",
-      "match_keywords": [
-        "mojtaba khamenei",
-        "seen",
-        "public"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -4160,6 +4157,18 @@
       "match_keywords": [
         "donald trump",
         "us presidential election"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "will-the-fed-increase-interest-rates-by-50-bps-after-the-september-2026-meeting-664",
+      "match_keywords": [
+        "fed",
+        "increase",
+        "interest",
+        "rates",
+        "meeting"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -4215,18 +4224,6 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-the-fed-increase-interest-rates-by-50-bps-after-the-september-2026-meeting-664",
-      "match_keywords": [
-        "fed",
-        "increase",
-        "interest",
-        "rates",
-        "meeting"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
       "slug": "will-raphal-glucksmann-win-the-2027-french-presidential-election",
       "match_keywords": [
         "rapha",
@@ -4234,17 +4231,6 @@
         "french",
         "presidential",
         "election"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "will-tom-brady-win-the-2028-republican-presidential-nomination",
-      "match_keywords": [
-        "tom brady",
-        "republican",
-        "presidential",
-        "nomination"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -4258,6 +4244,17 @@
         "us",
         "leader",
         "custody"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "will-tom-brady-win-the-2028-republican-presidential-nomination",
+      "match_keywords": [
+        "tom brady",
+        "republican",
+        "presidential",
+        "nomination"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -4295,6 +4292,17 @@
       "bear_keywords": []
     },
     {
+      "slug": "will-jon-ossoff-win-the-2028-democratic-presidential-nomination-885",
+      "match_keywords": [
+        "jon ossoff",
+        "democratic",
+        "presidential",
+        "nomination"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
       "slug": "will-kareem-allam-win-the-2026-vancouver-mayoral-election",
       "match_keywords": [
         "kareem allam",
@@ -4306,9 +4314,10 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-jon-ossoff-win-the-2028-democratic-presidential-nomination-885",
+      "slug": "will-alexandria-ocasio-cortez-win-the-2028-democratic-presidential-nomination-653",
       "match_keywords": [
-        "jon ossoff",
+        "alexandria ocasio",
+        "cortez",
         "democratic",
         "presidential",
         "nomination"
@@ -4378,6 +4387,18 @@
       "bear_keywords": []
     },
     {
+      "slug": "us-obtains-iranian-enriched-uranium-by-december-31-725-733",
+      "match_keywords": [
+        "us",
+        "iranian",
+        "obtains",
+        "enriched",
+        "uranium"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
       "slug": "pedro-castillo-pardoned-in-2026",
       "match_keywords": [
         "pedro castillo",
@@ -4393,16 +4414,6 @@
         "republican",
         "presidential",
         "nomination"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "will-edmundo-gonzlez-be-the-leader-of-venezuela-end-of-2026",
-      "match_keywords": [
-        "edmundo gonz",
-        "venezuela",
-        "leader"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -4439,6 +4450,26 @@
       "bear_keywords": []
     },
     {
+      "slug": "will-edmundo-gonzlez-be-the-leader-of-venezuela-end-of-2026",
+      "match_keywords": [
+        "edmundo gonz",
+        "venezuela",
+        "leader"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "will-angela-rayner-be-the-next-prime-minister-of-the-united-kingdom-in-2026-737",
+      "match_keywords": [
+        "angela rayner",
+        "prime minister",
+        "united kingdom"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
       "slug": "will-france-send-warships-through-the-strait-of-hormuz-by-june-30-2026",
       "match_keywords": [
         "france",
@@ -4459,15 +4490,6 @@
         "people",
         "dissent",
         "decision"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "will-greta-thunberg-win-the-nobel-peace-prize-in-2026-767",
-      "match_keywords": [
-        "greta thunberg",
-        "nobel peace prize"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -4494,14 +4516,10 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-abelardo-de-la-espriella-win-the-second-round-of-the-2026-colombian-presidential-election-by-15-20260605193429336",
+      "slug": "will-greta-thunberg-win-the-nobel-peace-prize-in-2026-767",
       "match_keywords": [
-        "abelardo",
-        "espriella",
-        "colombian",
-        "round",
-        "presidential",
-        "election"
+        "greta thunberg",
+        "nobel peace prize"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -4600,16 +4618,6 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-angela-rayner-be-the-next-prime-minister-of-the-united-kingdom-in-2026-737",
-      "match_keywords": [
-        "angela rayner",
-        "prime minister",
-        "united kingdom"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
       "slug": "elon-musk-of-tweets-june-16-june-23-380-399",
       "match_keywords": [
         "elon musk",
@@ -4632,19 +4640,6 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-abelardo-de-la-espriella-win-the-second-round-of-the-2026-colombian-presidential-election-by-10-15-20260605193429336",
-      "match_keywords": [
-        "abelardo",
-        "espriella",
-        "colombian",
-        "round",
-        "presidential",
-        "election"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
       "slug": "will-russia-enter-dobropillia-by-june-30",
       "match_keywords": [
         "russia",
@@ -4660,6 +4655,17 @@
         "sorin grindeanu",
         "prime minister",
         "romania"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "israel-and-lebanon-normalize-relations-before-2027",
+      "match_keywords": [
+        "israel",
+        "lebanon",
+        "normalize",
+        "relations"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -4727,15 +4733,6 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-julian-assange-win-the-nobel-peace-prize-in-2026-899",
-      "match_keywords": [
-        "julian assange",
-        "nobel peace prize"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
       "slug": "will-the-next-diplomatic-us-iran-meeting-be-in-the-uae-638",
       "match_keywords": [
         "us",
@@ -4748,12 +4745,10 @@
       "bear_keywords": []
     },
     {
-      "slug": "israel-and-lebanon-normalize-relations-before-2027",
+      "slug": "will-julian-assange-win-the-nobel-peace-prize-in-2026-899",
       "match_keywords": [
-        "israel",
-        "lebanon",
-        "normalize",
-        "relations"
+        "julian assange",
+        "nobel peace prize"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -4812,15 +4807,6 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-elon-musk-win-the-nobel-peace-prize-in-2026-756",
-      "match_keywords": [
-        "elon musk",
-        "nobel peace prize"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
       "slug": "starmer-out-by-august-31-2026",
       "match_keywords": [
         "starmer"
@@ -4829,10 +4815,10 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-tom-steyer-win-the-california-governor-election-in-2026",
+      "slug": "will-elon-musk-win-the-nobel-peace-prize-in-2026-756",
       "match_keywords": [
-        "tom steyer",
-        "california governor election"
+        "elon musk",
+        "nobel peace prize"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -4849,13 +4835,36 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-alexandria-ocasio-cortez-win-the-2028-democratic-presidential-nomination-653",
+      "slug": "trump-orders-federal-review-of-ai-model-releases-by-june-30",
       "match_keywords": [
-        "alexandria ocasio",
-        "cortez",
-        "democratic",
+        "trump",
+        "ai",
+        "orders",
+        "federal",
+        "review",
+        "model"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "will-recep-tayyip-erdoan-win-the-nobel-peace-prize-in-2026",
+      "match_keywords": [
+        "recep tayyip erdo",
+        "nobel peace prize"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "will-abelardo-de-la-espriella-win-the-second-round-of-the-2026-colombian-presidential-election-by-10-15-20260605193429336",
+      "match_keywords": [
+        "abelardo",
+        "espriella",
+        "colombian",
+        "round",
         "presidential",
-        "nomination"
+        "election"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -4866,16 +4875,6 @@
         "mojtaba khamenei",
         "seen",
         "public"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "will-frank-donovan-be-the-leader-of-venezuela-end-of-2026",
-      "match_keywords": [
-        "frank donovan",
-        "venezuela",
-        "leader"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -4892,10 +4891,11 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-recep-tayyip-erdoan-win-the-nobel-peace-prize-in-2026",
+      "slug": "will-frank-donovan-be-the-leader-of-venezuela-end-of-2026",
       "match_keywords": [
-        "recep tayyip erdo",
-        "nobel peace prize"
+        "frank donovan",
+        "venezuela",
+        "leader"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -4988,19 +4988,6 @@
       "bear_keywords": []
     },
     {
-      "slug": "trump-orders-federal-review-of-ai-model-releases-by-june-30",
-      "match_keywords": [
-        "trump",
-        "ai",
-        "orders",
-        "federal",
-        "review",
-        "model"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
       "slug": "will-ed-davey-be-the-next-prime-minister-of-the-united-kingdom-in-2026-255",
       "match_keywords": [
         "ed davey",
@@ -5039,20 +5026,20 @@
       "bear_keywords": []
     },
     {
+      "slug": "will-inflation-reach-more-than-5-in-2026-282-763",
+      "match_keywords": [
+        "inflation"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
       "slug": "will-tucker-carlson-win-the-2028-republican-presidential-nomination",
       "match_keywords": [
         "tucker carlson",
         "republican",
         "presidential",
         "nomination"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "will-inflation-reach-more-than-5-in-2026-282-763",
-      "match_keywords": [
-        "inflation"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -5090,21 +5077,21 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-james-talarico-win-the-2028-us-presidential-election",
-      "match_keywords": [
-        "james talarico",
-        "us presidential election"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
       "slug": "will-saeed-jalili-be-head-of-state-in-iran-end-of-2026",
       "match_keywords": [
         "saeed jalili",
         "iran",
         "head",
         "state"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "will-james-talarico-win-the-2028-us-presidential-election",
+      "match_keywords": [
+        "james talarico",
+        "us presidential election"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -5141,22 +5128,24 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-pete-hegseth-be-the-leader-of-venezuela-end-of-2026",
+      "slug": "will-abelardo-de-la-espriella-win-the-second-round-of-the-2026-colombian-presidential-election-by-15-20260605193429336",
       "match_keywords": [
-        "pete hegseth",
-        "venezuela",
-        "leader"
+        "abelardo",
+        "espriella",
+        "colombian",
+        "round",
+        "presidential",
+        "election"
       ],
       "bull_keywords": [],
       "bear_keywords": []
     },
     {
-      "slug": "will-donald-trump-publicly-insult-benjamin-netanyahu-by-june-30-2026",
+      "slug": "will-pete-hegseth-be-the-leader-of-venezuela-end-of-2026",
       "match_keywords": [
-        "donald trump",
-        "benjamin netanyahu",
-        "publicly",
-        "insult"
+        "pete hegseth",
+        "venezuela",
+        "leader"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -5204,12 +5193,32 @@
       "bear_keywords": []
     },
     {
+      "slug": "will-donald-trump-publicly-insult-benjamin-netanyahu-by-june-30-2026",
+      "match_keywords": [
+        "donald trump",
+        "benjamin netanyahu",
+        "publicly",
+        "insult"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
       "slug": "will-the-us-capture-another-world-leader-in-2026",
       "match_keywords": [
         "us",
         "capture",
         "world",
         "leader"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "will-andy-beshear-win-the-2028-us-presidential-election",
+      "match_keywords": [
+        "andy beshear",
+        "us presidential election"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -5236,6 +5245,17 @@
       "bear_keywords": []
     },
     {
+      "slug": "will-nathan-butterfield-be-the-republican-nominee-for-ok-01",
+      "match_keywords": [
+        "nathan butterfield",
+        "republican",
+        "ok",
+        "nominee"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
       "slug": "will-ahmed-al-sharaa-win-the-nobel-peace-prize-in-2026",
       "match_keywords": [
         "ahmed",
@@ -5256,23 +5276,21 @@
       "bear_keywords": []
     },
     {
+      "slug": "will-tom-steyer-win-the-california-governor-election-in-2026",
+      "match_keywords": [
+        "tom steyer",
+        "california governor election"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
       "slug": "will-chris-murphy-win-the-2028-democratic-presidential-nomination",
       "match_keywords": [
         "chris murphy",
         "democratic",
         "presidential",
         "nomination"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "will-nathan-butterfield-be-the-republican-nominee-for-ok-01",
-      "match_keywords": [
-        "nathan butterfield",
-        "republican",
-        "ok",
-        "nominee"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -5345,6 +5363,17 @@
       "bear_keywords": []
     },
     {
+      "slug": "will-pete-hegseth-leave-the-trump-administration-before-2027",
+      "match_keywords": [
+        "pete hegseth",
+        "trump",
+        "leave",
+        "administration"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
       "slug": "will-another-candidate-win-the-2nd-round-of-the-2026-peru-presidential-election-20260609021542098",
       "match_keywords": [
         "peru",
@@ -5362,17 +5391,6 @@
         "yvette cooper",
         "prime minister",
         "united kingdom"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "will-pete-hegseth-leave-the-trump-administration-before-2027",
-      "match_keywords": [
-        "pete hegseth",
-        "trump",
-        "leave",
-        "administration"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -5416,19 +5434,6 @@
         "corina machado",
         "venezuela",
         "enter"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "will-abelardo-de-la-espriella-win-the-second-round-of-the-2026-colombian-presidential-election-by-0-5-20260605193429336",
-      "match_keywords": [
-        "abelardo",
-        "espriella",
-        "colombian",
-        "round",
-        "presidential",
-        "election"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -5480,9 +5485,9 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-shabana-mahmood-be-the-next-prime-minister-of-the-united-kingdom-in-2026-129",
+      "slug": "will-al-carns-be-the-next-prime-minister-of-the-united-kingdom-in-2026-126",
       "match_keywords": [
-        "shabana mahmood",
+        "al carns",
         "prime minister",
         "united kingdom"
       ],
@@ -5490,21 +5495,11 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-jon-stewart-win-the-2028-democratic-presidential-nomination-518",
+      "slug": "will-shabana-mahmood-be-the-next-prime-minister-of-the-united-kingdom-in-2026-129",
       "match_keywords": [
-        "jon stewart",
-        "democratic",
-        "presidential",
-        "nomination"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "will-andy-beshear-win-the-2028-us-presidential-election",
-      "match_keywords": [
-        "andy beshear",
-        "us presidential election"
+        "shabana mahmood",
+        "prime minister",
+        "united kingdom"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -5516,6 +5511,27 @@
         "french",
         "presidential",
         "election"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "will-crude-oil-reach-a-new-all-time-high-by-december-31",
+      "match_keywords": [
+        "crude oil",
+        "time",
+        "high"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "will-jon-stewart-win-the-2028-democratic-presidential-nomination-518",
+      "match_keywords": [
+        "jon stewart",
+        "democratic",
+        "presidential",
+        "nomination"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -5540,23 +5556,23 @@
       "bear_keywords": []
     },
     {
-      "slug": "donald-trump-of-truth-social-posts-june-9-june-16-120-139",
-      "match_keywords": [
-        "donald trump",
-        "truth social",
-        "post",
-        "posts"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
       "slug": "will-elon-musk-win-the-2028-republican-presidential-nomination",
       "match_keywords": [
         "elon musk",
         "republican",
         "presidential",
         "nomination"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "donald-trump-of-truth-social-posts-june-9-june-16-120-139",
+      "match_keywords": [
+        "donald trump",
+        "truth social",
+        "post",
+        "posts"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -5575,19 +5591,6 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-new-people-nl-gain-the-most-seats-in-the-next-russian-parliamentary-election",
-      "match_keywords": [
-        "new people",
-        "nl",
-        "russian",
-        "gain",
-        "seats",
-        "parliamentary"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
       "slug": "will-ivan-cepeda-castro-place-1st-in-bogota-in-the-second-round-of-the-2026-colombia-presidential-election-20260604170547990",
       "match_keywords": [
         "iv",
@@ -5601,10 +5604,14 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-tucker-carlson-win-the-2028-us-presidential-election",
+      "slug": "will-new-people-nl-gain-the-most-seats-in-the-next-russian-parliamentary-election",
       "match_keywords": [
-        "tucker carlson",
-        "us presidential election"
+        "new people",
+        "nl",
+        "russian",
+        "gain",
+        "seats",
+        "parliamentary"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -5614,16 +5621,6 @@
       "match_keywords": [
         "jd vance",
         "vp"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "will-crude-oil-reach-a-new-all-time-high-by-december-31",
-      "match_keywords": [
-        "crude oil",
-        "time",
-        "high"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -5719,11 +5716,10 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-al-carns-be-the-next-prime-minister-of-the-united-kingdom-in-2026-126",
+      "slug": "will-tucker-carlson-win-the-2028-us-presidential-election",
       "match_keywords": [
-        "al carns",
-        "prime minister",
-        "united kingdom"
+        "tucker carlson",
+        "us presidential election"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -5772,6 +5768,16 @@
       "bear_keywords": []
     },
     {
+      "slug": "will-warsh-say-good-afternoon-during-june-press-conference-20260608181156653",
+      "match_keywords": [
+        "warsh",
+        "good afternoon",
+        "june press conference"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
       "slug": "will-vladimir-putin-win-the-nobel-peace-prize-in-2026-126",
       "match_keywords": [
         "vladimir putin",
@@ -5786,6 +5792,19 @@
         "philippe",
         "french",
         "douard",
+        "presidential",
+        "election"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "will-abelardo-de-la-espriella-win-the-second-round-of-the-2026-colombian-presidential-election-by-0-5-20260605193429336",
+      "match_keywords": [
+        "abelardo",
+        "espriella",
+        "colombian",
+        "round",
         "presidential",
         "election"
       ],
@@ -5808,17 +5827,6 @@
         "wes streeting",
         "prime minister",
         "united kingdom"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "will-ric-zemmour-win-the-2027-french-presidential-election",
-      "match_keywords": [
-        "zemmour",
-        "french",
-        "presidential",
-        "election"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -5849,6 +5857,15 @@
         "trump",
         "putin",
         "meet"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "will-the-democrats-win-the-2028-us-presidential-election",
+      "match_keywords": [
+        "democrats",
+        "us presidential election"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -6067,27 +6084,6 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-trump-and-putin-meet-next-in-united-states-224-875-469",
-      "match_keywords": [
-        "trump",
-        "putin",
-        "united states",
-        "meet"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "will-warsh-say-good-afternoon-during-june-press-conference-20260608181156653",
-      "match_keywords": [
-        "warsh",
-        "good afternoon",
-        "june press conference"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
       "slug": "will-trump-and-putin-meet-next-in-australia-459-332-211",
       "match_keywords": [
         "trump",
@@ -6138,10 +6134,22 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-the-democrats-win-the-2028-us-presidential-election",
+      "slug": "will-trump-and-putin-meet-next-in-united-states-224-875-469",
       "match_keywords": [
-        "democrats",
-        "us presidential election"
+        "trump",
+        "putin",
+        "united states",
+        "meet"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "will-ed-miliband-be-the-next-prime-minister-of-the-united-kingdom-in-2026-745",
+      "match_keywords": [
+        "ed miliband",
+        "prime minister",
+        "united kingdom"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -6159,6 +6167,16 @@
       "bear_keywords": []
     },
     {
+      "slug": "will-benny-gantz-be-the-next-prime-minister-of-israel",
+      "match_keywords": [
+        "benny gantz",
+        "prime minister",
+        "israel"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
       "slug": "will-reza-pirzadeh-be-head-of-state-in-iran-end-of-2026",
       "match_keywords": [
         "reza pirzadeh",
@@ -6170,11 +6188,21 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-benny-gantz-be-the-next-prime-minister-of-israel",
+      "slug": "will-burt-jones-win-the-2026-georgia-governor-republican-primary-election",
       "match_keywords": [
-        "benny gantz",
-        "prime minister",
-        "israel"
+        "burt jones",
+        "georgia governor republican",
+        "primary",
+        "election"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "will-netanyahu-be-pardoned-by-june-30",
+      "match_keywords": [
+        "netanyahu",
+        "pardoned"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -6272,19 +6300,6 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-ivan-cepeda-castro-win-the-second-round-of-the-2026-colombian-presidential-election-20260605193429336",
-      "match_keywords": [
-        "iv",
-        "cepeda castro",
-        "colombian",
-        "round",
-        "presidential",
-        "election"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
       "slug": "will-parti-vert-du-qubec-win-the-most-seats-in-the-2026-quebec-general-election",
       "match_keywords": [
         "parti",
@@ -6327,24 +6342,6 @@
         "send",
         "warships",
         "through"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "netanyahu-out-by-july-31",
-      "match_keywords": [
-        "netanyahu"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "will-ed-miliband-be-the-next-prime-minister-of-the-united-kingdom-in-2026-745",
-      "match_keywords": [
-        "ed miliband",
-        "prime minister",
-        "united kingdom"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -6411,26 +6408,6 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-kamala-harris-win-the-2028-democratic-presidential-nomination-641",
-      "match_keywords": [
-        "kamala harris",
-        "democratic",
-        "presidential",
-        "nomination"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "will-netanyahu-be-pardoned-by-june-30",
-      "match_keywords": [
-        "netanyahu",
-        "pardoned"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
       "slug": "pete-hegseth-out-as-secretary-of-defense-by-december-31",
       "match_keywords": [
         "pete hegseth",
@@ -6461,17 +6438,6 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-burt-jones-win-the-2026-georgia-governor-republican-primary-election",
-      "match_keywords": [
-        "burt jones",
-        "georgia governor republican",
-        "primary",
-        "election"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
       "slug": "will-masoud-pezeshkian-be-head-of-state-in-iran-end-of-2026",
       "match_keywords": [
         "masoud pezeshkian",
@@ -6495,21 +6461,10 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-gretchen-whitmer-win-the-2028-democratic-presidential-nomination-676",
+      "slug": "will-kamala-harris-win-the-2028-democratic-presidential-nomination-641",
       "match_keywords": [
-        "gretchen whitmer",
+        "kamala harris",
         "democratic",
-        "presidential",
-        "nomination"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "will-steve-bannon-win-the-2028-republican-presidential-nomination",
-      "match_keywords": [
-        "steve bannon",
-        "republican",
         "presidential",
         "nomination"
       ],
@@ -6523,6 +6478,17 @@
         "iran",
         "diplomatic",
         "meeting"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "will-steve-bannon-win-the-2028-republican-presidential-nomination",
+      "match_keywords": [
+        "steve bannon",
+        "republican",
+        "presidential",
+        "nomination"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -6549,6 +6515,17 @@
       "bear_keywords": []
     },
     {
+      "slug": "will-gretchen-whitmer-win-the-2028-democratic-presidential-nomination-676",
+      "match_keywords": [
+        "gretchen whitmer",
+        "democratic",
+        "presidential",
+        "nomination"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
       "slug": "elon-musk-of-tweets-june-19-june-26-160-179",
       "match_keywords": [
         "elon musk",
@@ -6567,15 +6544,6 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-antonio-villaraigosa-win-the-california-governor-election-in-2026",
-      "match_keywords": [
-        "antonio villaraigosa",
-        "california governor election"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
       "slug": "will-the-next-prime-minister-of-romania-be-a-member-of-pnl-357",
       "match_keywords": [
         "prime minister",
@@ -6587,12 +6555,34 @@
       "bear_keywords": []
     },
     {
+      "slug": "will-antonio-villaraigosa-win-the-california-governor-election-in-2026",
+      "match_keywords": [
+        "antonio villaraigosa",
+        "california governor election"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
       "slug": "will-mostafa-pourmohammadi-be-head-of-state-in-iran-end-of-2026",
       "match_keywords": [
         "mostafa pourmohammadi",
         "iran",
         "head",
         "state"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "will-ivan-cepeda-castro-win-the-second-round-of-the-2026-colombian-presidential-election-20260605193429336",
+      "match_keywords": [
+        "iv",
+        "cepeda castro",
+        "colombian",
+        "round",
+        "presidential",
+        "election"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -6683,22 +6673,22 @@
       "bear_keywords": []
     },
     {
+      "slug": "will-jesus-christ-return-before-gta-vi-665",
+      "match_keywords": [
+        "jesus christ",
+        "gta vi",
+        "return"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
       "slug": "will-navid-shomali-be-head-of-state-in-iran-end-of-2026",
       "match_keywords": [
         "navid shomali",
         "iran",
         "head",
         "state"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "will-jesus-christ-return-before-gta-vi-665",
-      "match_keywords": [
-        "jesus christ",
-        "gta vi",
-        "return"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -6733,6 +6723,17 @@
       "bear_keywords": []
     },
     {
+      "slug": "will-jackson-lahmeyer-be-the-republican-nominee-for-ok-01",
+      "match_keywords": [
+        "jackson lahmeyer",
+        "republican",
+        "ok",
+        "nominee"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
       "slug": "will-daniel-helldn-be-the-next-prime-minister-of-sweden",
       "match_keywords": [
         "daniel helld",
@@ -6761,16 +6762,6 @@
         "early",
         "presidential",
         "elections"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "will-the-international-court-of-justice-win-the-nobel-peace-prize-in-2026-885",
-      "match_keywords": [
-        "international court",
-        "justice",
-        "nobel peace prize"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -6812,17 +6803,6 @@
         "rachel reeves",
         "prime minister",
         "united kingdom"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "will-jackson-lahmeyer-be-the-republican-nominee-for-ok-01",
-      "match_keywords": [
-        "jackson lahmeyer",
-        "republican",
-        "ok",
-        "nominee"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -6896,6 +6876,16 @@
       "bear_keywords": []
     },
     {
+      "slug": "will-the-international-court-of-justice-win-the-nobel-peace-prize-in-2026-885",
+      "match_keywords": [
+        "international court",
+        "justice",
+        "nobel peace prize"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
       "slug": "us-strike-on-colombia-by-december-31",
       "match_keywords": [
         "us",
@@ -6911,6 +6901,16 @@
         "trump",
         "xi jinping",
         "speak"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "will-radu-burnete-be-the-next-prime-minister-of-romania",
+      "match_keywords": [
+        "radu burnete",
+        "prime minister",
+        "romania"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -7118,6 +7118,18 @@
       "bear_keywords": []
     },
     {
+      "slug": "congress-passes-iran-war-powers-resolution-by-june-30",
+      "match_keywords": [
+        "congress",
+        "iran",
+        "passes",
+        "powers",
+        "resolution"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
       "slug": "100-tariff-on-canada-in-effect-by-june-30",
       "match_keywords": [
         "canada",
@@ -7148,24 +7160,23 @@
       "bear_keywords": []
     },
     {
-      "slug": "congress-passes-iran-war-powers-resolution-by-june-30",
-      "match_keywords": [
-        "congress",
-        "iran",
-        "passes",
-        "powers",
-        "resolution"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
       "slug": "will-jean-luc-mlenchon-win-the-2027-french-presidential-election",
       "match_keywords": [
         "jean",
         "luc",
         "french",
         "lenchon",
+        "presidential",
+        "election"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "will-ric-zemmour-win-the-2027-french-presidential-election",
+      "match_keywords": [
+        "zemmour",
+        "french",
         "presidential",
         "election"
       ],
@@ -7190,17 +7201,6 @@
         "iran",
         "head",
         "state"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "will-sarah-knafo-win-the-2027-french-presidential-election",
-      "match_keywords": [
-        "sarah knafo",
-        "french",
-        "presidential",
-        "election"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -7281,6 +7281,15 @@
       "bear_keywords": []
     },
     {
+      "slug": "will-jamie-dimon-win-the-2028-us-presidential-election",
+      "match_keywords": [
+        "jamie dimon",
+        "us presidential election"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
       "slug": "will-lebanon-join-the-abraham-accords-before-2027",
       "match_keywords": [
         "lebanon",
@@ -7301,19 +7310,12 @@
       "bear_keywords": []
     },
     {
-      "slug": "edi-rama-out-as-albania-pm-in-2026",
+      "slug": "will-sarah-knafo-win-the-2027-french-presidential-election",
       "match_keywords": [
-        "edi rama",
-        "albania pm"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "will-jamie-dimon-win-the-2028-us-presidential-election",
-      "match_keywords": [
-        "jamie dimon",
-        "us presidential election"
+        "sarah knafo",
+        "french",
+        "presidential",
+        "election"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -7522,32 +7524,21 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-greg-abbott-win-the-2028-us-presidential-election",
-      "match_keywords": [
-        "greg abbott",
-        "us presidential election"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "will-david-lisnard-win-the-2027-french-presidential-election",
-      "match_keywords": [
-        "david lisnard",
-        "french",
-        "presidential",
-        "election"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
       "slug": "will-75-99-ships-transit-the-strait-of-hormuz-between-june-8-june-14",
       "match_keywords": [
         "strait",
         "hormuz",
         "ships",
         "transit"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "will-greg-abbott-win-the-2028-us-presidential-election",
+      "match_keywords": [
+        "greg abbott",
+        "us presidential election"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -7584,6 +7575,16 @@
       "bear_keywords": []
     },
     {
+      "slug": "claudia-sheinbaum-out-as-president-of-mexico-by-june-30-791",
+      "match_keywords": [
+        "claudia sheinbaum",
+        "president",
+        "mexico"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
       "slug": "will-corey-booker-win-the-2028-democratic-presidential-nomination-125",
       "match_keywords": [
         "cory booker",
@@ -7601,16 +7602,6 @@
         "nato",
         "agrees",
         "join"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "claudia-sheinbaum-out-as-president-of-mexico-by-june-30-791",
-      "match_keywords": [
-        "claudia sheinbaum",
-        "president",
-        "mexico"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -7675,6 +7666,17 @@
         "hold",
         "diplomatic",
         "meeting"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "will-rick-jackson-win-the-2026-georgia-governor-republican-primary-election",
+      "match_keywords": [
+        "rick jackson",
+        "georgia governor republican",
+        "primary",
+        "election"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -7765,11 +7767,11 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-rick-jackson-win-the-2026-georgia-governor-republican-primary-election",
+      "slug": "will-david-lisnard-win-the-2027-french-presidential-election",
       "match_keywords": [
-        "rick jackson",
-        "georgia governor republican",
-        "primary",
+        "david lisnard",
+        "french",
+        "presidential",
         "election"
       ],
       "bull_keywords": [],
@@ -7808,18 +7810,6 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-fujimori-win-the-2nd-round-of-the-2026-peru-presidential-election-by-04",
-      "match_keywords": [
-        "fujimori",
-        "peru",
-        "round",
-        "presidential",
-        "election"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
       "slug": "will-pete-hegseth-sign-a-uptspt-x-iran-deal-by-july-31-20260611235950070",
       "match_keywords": [
         "pete hegseth",
@@ -7827,6 +7817,18 @@
         "iran",
         "sign",
         "deal"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "will-fujimori-win-the-2nd-round-of-the-2026-peru-presidential-election-by-04",
+      "match_keywords": [
+        "fujimori",
+        "peru",
+        "round",
+        "presidential",
+        "election"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -7906,9 +7908,38 @@
       "bear_keywords": []
     },
     {
+      "slug": "will-troy-green-be-the-democratic-nominee-for-senate-in-oklahoma",
+      "match_keywords": [
+        "troy green",
+        "democratic",
+        "senate",
+        "oklahoma",
+        "nominee"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "will-pope-leo-xiv-win-the-nobel-peace-prize-in-2026-698",
+      "match_keywords": [
+        "pope leo xiv",
+        "nobel peace prize"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
       "slug": "nothing-ever-happens-2026",
       "match_keywords": [
         "nothing ever happens"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "netanyahu-out-by-july-31",
+      "match_keywords": [
+        "netanyahu"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -7967,27 +7998,6 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-troy-green-be-the-democratic-nominee-for-senate-in-oklahoma",
-      "match_keywords": [
-        "troy green",
-        "democratic",
-        "senate",
-        "oklahoma",
-        "nominee"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "will-pope-leo-xiv-win-the-nobel-peace-prize-in-2026-698",
-      "match_keywords": [
-        "pope leo xiv",
-        "nobel peace prize"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
       "slug": "will-luciano-zucco-win-the-governor-of-rio-grande-do-sul-election-718",
       "match_keywords": [
         "luciano zucco",
@@ -8022,12 +8032,33 @@
       "bear_keywords": []
     },
     {
+      "slug": "will-the-white-house-call-a-full-lid-by-630pm-on-june-16-20260612215749895",
+      "match_keywords": [
+        "white house",
+        "call",
+        "full"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
       "slug": "donald-trump-of-truth-social-posts-june-12-june-19-60-79",
       "match_keywords": [
         "donald trump",
         "truth social",
         "post",
         "posts"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "china-x-india-military-clash-by-december-31-2026",
+      "match_keywords": [
+        "china",
+        "india",
+        "military",
+        "clash"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -8049,17 +8080,6 @@
         "ma",
         "house",
         "seat"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "china-x-india-military-clash-by-december-31-2026",
-      "match_keywords": [
-        "china",
-        "india",
-        "military",
-        "clash"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -8119,6 +8139,15 @@
         "republican",
         "ok",
         "nominee"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "edi-rama-out-as-albania-pm-in-2026",
+      "match_keywords": [
+        "edi rama",
+        "albania pm"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -8429,21 +8458,21 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-trump-speak-to-elon-musk-in-june",
-      "match_keywords": [
-        "trump",
-        "elon musk",
-        "speak"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
       "slug": "will-no-one-dissent-the-june-fed-decision",
       "match_keywords": [
         "june fed",
         "dissent",
         "decision"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "is-jeffrey-epstein-alive-498",
+      "match_keywords": [
+        "jeffrey epstein",
+        "confirmed",
+        "alive"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -8480,21 +8509,21 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-russia-enter-dopropillia-by-june-30-122-495",
+      "slug": "will-magdalena-andersson-be-the-next-prime-minister-of-sweden",
       "match_keywords": [
-        "russia",
-        "dopropillia",
-        "enter"
+        "magdalena andersson",
+        "prime minister",
+        "sweden"
       ],
       "bull_keywords": [],
       "bear_keywords": []
     },
     {
-      "slug": "is-jeffrey-epstein-alive-498",
+      "slug": "will-russia-enter-dopropillia-by-june-30-122-495",
       "match_keywords": [
-        "jeffrey epstein",
-        "confirmed",
-        "alive"
+        "russia",
+        "dopropillia",
+        "enter"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -8508,6 +8537,16 @@
         "give",
         "security",
         "guarantee"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "will-trump-speak-to-elon-musk-in-june",
+      "match_keywords": [
+        "trump",
+        "elon musk",
+        "speak"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -8530,16 +8569,6 @@
         "absolute",
         "majority",
         "seats"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "will-magdalena-andersson-be-the-next-prime-minister-of-sweden",
-      "match_keywords": [
-        "magdalena andersson",
-        "prime minister",
-        "sweden"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -8589,22 +8618,22 @@
       "bear_keywords": []
     },
     {
-      "slug": "white-house-of-tweets-june-16-june-23-2026-60-79",
-      "match_keywords": [
-        "white house",
-        "post",
-        "posts"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
       "slug": "will-stephen-a-smith-win-the-2028-democratic-presidential-nomination-914",
       "match_keywords": [
         "stephen a. smith",
         "democratic",
         "presidential",
         "nomination"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "white-house-of-tweets-june-16-june-23-2026-60-79",
+      "match_keywords": [
+        "white house",
+        "post",
+        "posts"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -8635,27 +8664,6 @@
       "match_keywords": [
         "donald trump",
         "leader"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "israeli-parliament-dissolved-by-july-31",
-      "match_keywords": [
-        "israeli",
-        "parliament",
-        "dissolved"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "will-trump-and-putin-meet-next-in-russia-594-493-482",
-      "match_keywords": [
-        "trump",
-        "putin",
-        "russia",
-        "meet"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -8757,6 +8765,16 @@
       "bear_keywords": []
     },
     {
+      "slug": "israeli-parliament-dissolved-by-july-31",
+      "match_keywords": [
+        "israeli",
+        "parliament",
+        "dissolved"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
       "slug": "will-elon-musk-post-880-919-tweets-in-june-2026-20260608234701823",
       "match_keywords": [
         "elon musk",
@@ -8782,6 +8800,17 @@
         "trump",
         "dana white",
         "praise"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "will-delcy-rodrguez-be-the-leader-of-venezuela-end-of-2026",
+      "match_keywords": [
+        "delcy rodr",
+        "venezuela",
+        "guez",
+        "leader"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -8953,17 +8982,6 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-delcy-rodrguez-be-the-leader-of-venezuela-end-of-2026",
-      "match_keywords": [
-        "delcy rodr",
-        "venezuela",
-        "guez",
-        "leader"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
       "slug": "will-recep-tayyip-erdogan-sign-a-uptspt-x-iran-deal-by-july-31-20260611235950080",
       "match_keywords": [
         "recep tayyip erdogan",
@@ -8993,16 +9011,6 @@
         "og anunoby jr.",
         "prime minister",
         "united kingdom"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "will-trump-and-putin-not-meet-432",
-      "match_keywords": [
-        "trump",
-        "putin",
-        "meet"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -9234,6 +9242,16 @@
       "bear_keywords": []
     },
     {
+      "slug": "will-trump-and-putin-not-meet-432",
+      "match_keywords": [
+        "trump",
+        "putin",
+        "meet"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
       "slug": "will-trump-and-putin-meet-next-in-another-eu-country",
       "match_keywords": [
         "trump",
@@ -9246,21 +9264,21 @@
       "bear_keywords": []
     },
     {
+      "slug": "will-the-republicans-win-the-2028-us-presidential-election",
+      "match_keywords": [
+        "republicans",
+        "us presidential election"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
       "slug": "will-kim-kardashian-win-the-2028-republican-presidential-nomination",
       "match_keywords": [
         "kim kardashian",
         "republican",
         "presidential",
         "nomination"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "will-the-republicans-win-the-2028-us-presidential-election",
-      "match_keywords": [
-        "republicans",
-        "us presidential election"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -9372,12 +9390,14 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-ted-cruz-win-the-2028-republican-presidential-nomination",
+      "slug": "will-voter-turnout-be-60-64-in-the-second-round-of-the-2026-colombian-presidential-election-20260605193343335",
       "match_keywords": [
-        "ted cruz",
-        "republican",
+        "colombian",
+        "voter",
+        "turnout",
+        "round",
         "presidential",
-        "nomination"
+        "election"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -9387,6 +9407,17 @@
       "match_keywords": [
         "jb pritzker",
         "us presidential election"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "will-ted-cruz-win-the-2028-republican-presidential-nomination",
+      "match_keywords": [
+        "ted cruz",
+        "republican",
+        "presidential",
+        "nomination"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -9414,16 +9445,6 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-the-white-house-call-a-full-lid-by-630pm-on-june-16-20260612215749895",
-      "match_keywords": [
-        "white house",
-        "call",
-        "full"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
       "slug": "will-the-republican-party-win-the-ca-11-house-seat",
       "match_keywords": [
         "republican party",
@@ -9443,16 +9464,6 @@
         "round",
         "presidential",
         "election"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "will-netanyahu-talk-to-joseph-aoun-by-june-30",
-      "match_keywords": [
-        "netanyahu",
-        "joseph aoun",
-        "talk"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -9486,6 +9497,16 @@
         "confidence",
         "vote",
         "against"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "will-netanyahu-talk-to-joseph-aoun-by-june-30",
+      "match_keywords": [
+        "netanyahu",
+        "joseph aoun",
+        "talk"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -9567,10 +9588,32 @@
       "bear_keywords": []
     },
     {
+      "slug": "will-karen-bass-win-the-2026-los-angeles-mayoral-election",
+      "match_keywords": [
+        "karen bass",
+        "los angeles",
+        "mayoral",
+        "election"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
       "slug": "israel-x-hamas-ceasefire-phase-ii-by-june-30",
       "match_keywords": [
         "israel",
         "hamas ceasefire phase ii"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "will-trump-and-putin-meet-next-in-russia-594-493-482",
+      "match_keywords": [
+        "trump",
+        "putin",
+        "russia",
+        "meet"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -9581,17 +9624,6 @@
         "elon musk",
         "post",
         "tweets"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "will-karen-bass-win-the-2026-los-angeles-mayoral-election",
-      "match_keywords": [
-        "karen bass",
-        "los angeles",
-        "mayoral",
-        "election"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -9664,16 +9696,6 @@
       "bear_keywords": []
     },
     {
-      "slug": "zelenskyy-of-tweets-june-12-june-19-2026-40-59",
-      "match_keywords": [
-        "zelenskyy",
-        "post",
-        "posts"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
       "slug": "will-maryland-use-a-new-congressional-map-for-the-2026-united-states-midterm-elections",
       "match_keywords": [
         "maryland",
@@ -9694,6 +9716,17 @@
         "physically",
         "sign",
         "deal"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "will-howard-lutnick-leave-the-trump-administration-before-2027",
+      "match_keywords": [
+        "howard lutnick",
+        "trump",
+        "leave",
+        "administration"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -9900,16 +9933,6 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-radu-burnete-be-the-next-prime-minister-of-romania",
-      "match_keywords": [
-        "radu burnete",
-        "prime minister",
-        "romania"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
       "slug": "will-richard-gordon-thomson-win-the-2026-aberdeen-south-by-election-20260609203515895",
       "match_keywords": [
         "richard gordon thomson",
@@ -9940,22 +9963,20 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-vladimir-padrino-lpez-be-the-leader-of-venezuela-end-of-2026",
+      "slug": "will-unrwa-win-the-nobel-peace-prize-in-2026-983",
       "match_keywords": [
-        "vladimir padrino",
-        "venezuela",
-        "leader"
+        "unrwa",
+        "nobel peace prize"
       ],
       "bull_keywords": [],
       "bear_keywords": []
     },
     {
-      "slug": "will-trump-and-putin-meet-next-in-united-states",
+      "slug": "will-vladimir-padrino-lpez-be-the-leader-of-venezuela-end-of-2026",
       "match_keywords": [
-        "trump",
-        "putin",
-        "united states",
-        "meet"
+        "vladimir padrino",
+        "venezuela",
+        "leader"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -10011,6 +10032,17 @@
       "bear_keywords": []
     },
     {
+      "slug": "will-trump-and-putin-meet-next-in-united-states",
+      "match_keywords": [
+        "trump",
+        "putin",
+        "united states",
+        "meet"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
       "slug": "white-house-of-tweets-june-16-june-23-2026-200plus",
       "match_keywords": [
         "white house",
@@ -10032,10 +10064,12 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-unrwa-win-the-nobel-peace-prize-in-2026-983",
+      "slug": "ukraine-agrees-not-to-join-nato-before-2027",
       "match_keywords": [
-        "unrwa",
-        "nobel peace prize"
+        "ukraine",
+        "nato",
+        "agrees",
+        "join"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -10062,6 +10096,17 @@
       "bear_keywords": []
     },
     {
+      "slug": "will-jb-pritzker-win-the-2028-democratic-presidential-nomination-288",
+      "match_keywords": [
+        "j.b. pritzker",
+        "democratic",
+        "presidential",
+        "nomination"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
       "slug": "will-fernando-haddad-qualify-for-brazils-presidential-runoff",
       "match_keywords": [
         "fernando haddad",
@@ -10080,6 +10125,17 @@
         "romania",
         "psd",
         "member"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "will-frank-lucas-be-the-republican-nominee-for-ok-03",
+      "match_keywords": [
+        "frank lucas",
+        "republican",
+        "ok",
+        "nominee"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -10147,17 +10203,6 @@
       "bear_keywords": []
     },
     {
-      "slug": "ukraine-agrees-not-to-join-nato-before-2027",
-      "match_keywords": [
-        "ukraine",
-        "nato",
-        "agrees",
-        "join"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
       "slug": "will-the-republican-party-win-the-ri-01-house-seat",
       "match_keywords": [
         "republican party",
@@ -10213,17 +10258,6 @@
         "minas gerais",
         "gubernatorial",
         "election"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "will-frank-lucas-be-the-republican-nominee-for-ok-03",
-      "match_keywords": [
-        "frank lucas",
-        "republican",
-        "ok",
-        "nominee"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -10307,22 +10341,24 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-jb-pritzker-win-the-2028-democratic-presidential-nomination-288",
-      "match_keywords": [
-        "j.b. pritzker",
-        "democratic",
-        "presidential",
-        "nomination"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
       "slug": "will-ilhan-omar-be-the-democratic-nominee-for-mn-05",
       "match_keywords": [
         "ilhan omar",
         "democratic nominee",
         "mn"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "will-abdel-fattah-el-sisi-sign-a-uptspt-x-iran-deal-by-july-31-20260611235950085",
+      "match_keywords": [
+        "abdel fattah",
+        "sisi",
+        "u.s.",
+        "iran",
+        "sign",
+        "deal"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -10376,6 +10412,16 @@
       "bear_keywords": []
     },
     {
+      "slug": "us-strike-on-mexico-by-december-31",
+      "match_keywords": [
+        "us",
+        "mexico",
+        "strike"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
       "slug": "will-the-republicans-win-the-kansas-senate-race-in-2026",
       "match_keywords": [
         "republicans",
@@ -10418,17 +10464,6 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-howard-lutnick-leave-the-trump-administration-before-2027",
-      "match_keywords": [
-        "howard lutnick",
-        "trump",
-        "leave",
-        "administration"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
       "slug": "will-no-listed-leader-be-out-before-2027-147",
       "match_keywords": [
         "listed",
@@ -10448,16 +10483,6 @@
       "bear_keywords": []
     },
     {
-      "slug": "us-strike-on-mexico-by-december-31",
-      "match_keywords": [
-        "us",
-        "mexico",
-        "strike"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
       "slug": "will-zelenskyy-and-putin-meet-next-in-us",
       "match_keywords": [
         "zelenskyy",
@@ -10469,14 +10494,13 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-abdel-fattah-el-sisi-sign-a-uptspt-x-iran-deal-by-july-31-20260611235950085",
+      "slug": "will-the-us-iran-deal-be-physically-signed-by-june-19-2026-20260615222831704",
       "match_keywords": [
-        "abdel fattah",
-        "sisi",
-        "u.s.",
+        "us",
         "iran",
-        "sign",
-        "deal"
+        "deal",
+        "physically",
+        "signed"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -10625,16 +10649,6 @@
       "bear_keywords": []
     },
     {
-      "slug": "will-russia-capture-kostyantynivka-by-september-30",
-      "match_keywords": [
-        "russia",
-        "kostyantynivka",
-        "capture"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
       "slug": "will-volodymyr-zelenskyy-be-the-next-leader-out-before-2027-397",
       "match_keywords": [
         "volodymyr zelenskyy",
@@ -10644,12 +10658,11 @@
       "bear_keywords": []
     },
     {
-      "slug": "trump-declassifies-new-ufo-files-by-june-30-20260612142709367",
+      "slug": "will-somaliland-join-the-abraham-accords-before-2027",
       "match_keywords": [
-        "trump",
-        "ufo",
-        "declassifies",
-        "files"
+        "somaliland",
+        "abraham accords",
+        "join"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -10676,16 +10689,6 @@
         "official",
         "cash",
         "rate"
-      ],
-      "bull_keywords": [],
-      "bear_keywords": []
-    },
-    {
-      "slug": "will-somaliland-join-the-abraham-accords-before-2027",
-      "match_keywords": [
-        "somaliland",
-        "abraham accords",
-        "join"
       ],
       "bull_keywords": [],
       "bear_keywords": []
@@ -10877,6 +10880,16 @@
         "us",
         "iran signing ceremony",
         "attend"
+      ],
+      "bull_keywords": [],
+      "bear_keywords": []
+    },
+    {
+      "slug": "will-russia-capture-kostyantynivka-by-september-30",
+      "match_keywords": [
+        "russia",
+        "kostyantynivka",
+        "capture"
       ],
       "bull_keywords": [],
       "bear_keywords": []

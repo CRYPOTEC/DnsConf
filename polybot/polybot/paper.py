@@ -117,6 +117,34 @@ class PaperBroker:
         self.pf.trades.append(trade)
         return trade
 
+    def _sell_fill_price(self, quoted: float) -> float:
+        """Adverse slippage: sells fill below the quote. Clamp to (0,1)."""
+        price = quoted * (1.0 - self.slippage_bps / 10_000.0)
+        return min(0.999, max(0.001, price))
+
+    def sell(self, position_key: str, quoted_price: float, reason: str) -> tuple:
+        """Close a position at the current price. Returns (Trade, realized_pnl)."""
+        pos = self.pf.positions[position_key]
+        price = self._sell_fill_price(quoted_price)
+        proceeds = pos.shares * price * (1.0 - self.fee_bps / 10_000.0)
+        realized = proceeds - pos.shares * pos.avg_price
+        self.pf.cash += proceeds
+        self.pf.realized_pnl += realized
+        trade = Trade(
+            ts=time.time(),
+            market_id=pos.market_id,
+            market_question=pos.market_question,
+            outcome_name=pos.outcome_name,
+            side="SELL",
+            shares=pos.shares,
+            price=price,
+            cost=-proceeds,            # negative = cash inflow
+            rationale=reason,
+        )
+        self.pf.trades.append(trade)
+        del self.pf.positions[position_key]
+        return trade, realized
+
     def resolve(self, market: Market, winning_outcome_index: int) -> float:
         """Settle every position in a resolved market. Returns realized P&L."""
         realized = 0.0
