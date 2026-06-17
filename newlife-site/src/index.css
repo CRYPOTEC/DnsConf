@@ -1,0 +1,212 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;600;700;800&display=swap');
+@import 'tailwindcss';
+
+/* ============================================================
+   Дизайн-система «Новая Жизнь»
+   Светлая тёплая тема. Палитра снята с реальных домов:
+   терракота + кремово-бежевые нейтрали, акценты зелени,
+   глины и приглушённого синего (вода / фасадные вставки).
+   ============================================================ */
+@theme {
+  /* Шрифты (с поддержкой кириллицы) */
+  --font-sans: 'Manrope', system-ui, -apple-system, sans-serif;
+  --font-display: 'Unbounded', 'Manrope', system-ui, sans-serif;
+
+  /* Поверхности — тёплая бумага */
+  --color-ink: #221a13;   /* глубокий тёплый эспрессо (тёмные секции / футер) */
+  --color-base: #faf6ef;  /* кремовый фон страницы */
+  --color-elev: #ffffff;  /* карточки */
+  --color-elev2: #f4ecdf; /* приподнятая тёплая поверхность / hover */
+  --color-line: #eae0cf;  /* тёплая линия-волосок */
+  --color-line2: #ddccb3; /* контурная линия */
+
+  /* Текст */
+  --color-fg: #2a2017;    /* основной тёплый тёмный текст */
+  --color-muted: #6f6051; /* вторичный тёпло-серый */
+  --color-faint: #9d8c78; /* приглушённый */
+
+  /* Бренд — терракота с фасадов «Новой Жизни» */
+  --color-brand: #c0552f;    /* терракота / кирпич */
+  --color-brand-2: #db703c;  /* тёплый терракот-оранж (для градиента) */
+  --color-on-brand: #fff6ee; /* текст поверх бренда */
+
+  /* Доп. акценты со среды и фасадных вставок */
+  --color-sand: #e7d5bb; /* песочно-бежевый */
+  --color-clay: #a8472a; /* тёмная глина */
+  --color-lime: #7f9b39; /* природный лист / олива (озеленение, полоса фасада) */
+  --color-sky: #5d83a3;  /* приглушённый сине-серый (вода, фасадные панели) */
+  --color-brick: #a8743f; /* кирпично-коричневый — фирменный тон «Новой Нагановой» */
+
+  /* Радиусы */
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+
+  /* Анимации */
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-line);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--color-base);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    font-feature-settings: 'ss01', 'cv01';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    /* мягкое тёплое сияние в верхней части страницы */
+    background-image:
+      radial-gradient(
+        60rem 40rem at 78% -8%,
+        color-mix(in srgb, var(--color-brand) 12%, transparent),
+        transparent 60%
+      ),
+      radial-gradient(
+        50rem 36rem at 6% 2%,
+        color-mix(in srgb, var(--color-sand) 55%, transparent),
+        transparent 60%
+      );
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--color-brand) 28%, transparent);
+    color: var(--color-ink);
+  }
+
+  /* Тонкий кастомный скроллбар */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-elev2);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-line2);
+    border-radius: 999px;
+    border: 2px solid var(--color-elev2);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: color-mix(in srgb, var(--color-brand) 55%, var(--color-line2));
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.02;
+    color: var(--color-fg);
+    text-wrap: balance;
+  }
+}
+
+@layer utilities {
+  /* Горизонтальные поля контента */
+  .container-x {
+    width: 100%;
+    max-width: 80rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 768px) {
+    .container-x {
+      padding-inline: 2rem;
+    }
+  }
+
+  /* Градиентный текст бренда: тёмный → терракота */
+  .text-gradient {
+    background: linear-gradient(
+      100deg,
+      var(--color-fg) 0%,
+      var(--color-fg) 32%,
+      var(--color-brand) 74%,
+      var(--color-brand-2) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  /* Стеклянная поверхность (светлая) */
+  .glass {
+    background: color-mix(in srgb, var(--color-elev) 74%, transparent);
+    backdrop-filter: blur(16px) saturate(135%);
+    -webkit-backdrop-filter: blur(16px) saturate(135%);
+    border: 1px solid color-mix(in srgb, var(--color-ink) 8%, transparent);
+  }
+
+  /* Сетка-фон */
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, var(--color-line) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--color-line) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  /* Мягкое терракотовое свечение/обводка */
+  .glow-brand {
+    box-shadow:
+      0 0 0 1px color-mix(in srgb, var(--color-brand) 18%, transparent),
+      0 26px 70px -28px color-mix(in srgb, var(--color-brand) 50%, transparent);
+  }
+
+  .mask-fade-x {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 12%,
+      #000 88%,
+      transparent
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 12%,
+      #000 88%,
+      transparent
+    );
+  }
+
+  .mask-fade-b {
+    -webkit-mask-image: linear-gradient(to bottom, #000 60%, transparent);
+    mask-image: linear-gradient(to bottom, #000 60%, transparent);
+  }
+}
+
+/* Marquee (бегущая строка) */
+@keyframes marquee-x {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee-x var(--marquee-duration, 32s) linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-marquee {
+    animation: none;
+  }
+}

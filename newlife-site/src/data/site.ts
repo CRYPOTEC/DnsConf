@@ -1,0 +1,287 @@
+// Контент сайта застройщика «Новая» (Ульяновск).
+// Данные структурированы по реальному оригиналу newlife-ul.ru.
+
+export const company = {
+  name: 'Новая Жизнь',
+  tagline: 'Пространства, где хочется жить',
+  phone: '8 927 830 16 03',
+  phoneHref: 'tel:+79278301603',
+  city: 'Ульяновск',
+  since: 2007,
+}
+
+export type NavItem = { label: string; to: string }
+
+export const nav: NavItem[] = [
+  { label: 'Новая Жизнь', to: '/newlife' },
+  { label: 'Новая Наганова', to: '/naganova' },
+  { label: 'Квартиры', to: '/apartments' },
+  { label: 'Ипотека', to: '/mortgage' },
+  { label: 'О компании', to: '/about' },
+  { label: 'Контакты', to: '/contacts' },
+]
+
+export type Stat = { value: number; suffix: string; label: string }
+
+export const stats: Stat[] = [
+  { value: 18, suffix: '+', label: 'лет на рынке' },
+  { value: 1.5, suffix: ' млн м²', label: 'построено' },
+  { value: 4, suffix: '', label: 'города присутствия' },
+  { value: 12, suffix: 'k+', label: 'счастливых семей' },
+]
+
+export type ProjectShot = { src: string; title: string; tag: string }
+
+export type Project = {
+  slug: string
+  to: string
+  name: string
+  kind: string
+  status: string
+  tagline: string
+  description: string
+  highlights: string[]
+  accent: 'brand' | 'sky' | 'lime' | 'brick'
+  image: string
+  hero: string
+  shots: ProjectShot[]
+  badges: { label: string; value: string }[]
+}
+
+export const projects: Project[] = [
+  {
+    slug: 'newlife',
+    to: '/newlife',
+    name: 'Новая Жизнь',
+    kind: 'Микрорайон',
+    status: 'Идут продажи',
+    tagline: 'Дворы без машин и вся инфраструктура рядом',
+    description:
+      'Современный микрорайон с концепцией «дворы без машин» и всей необходимой инфраструктурой на первых этажах: детские сады, поликлиника, магазины, паркинги и зелёные парки.',
+    highlights: [
+      'Концепция «двор без машин»',
+      'Детские сады и школы в шаговой доступности',
+      'Подземные и наземные паркинги',
+      'Благоустроенные парки и зоны отдыха',
+    ],
+    accent: 'brand',
+    image: '/img/towers-terracotta.jpg',
+    hero: '/img/towers-terracotta.jpg',
+    shots: [
+      { src: '/img/towers-terracotta.jpg', title: 'Терракотовые кварталы', tag: 'Дома' },
+      { src: '/img/facade-orange.jpg', title: 'Тёплые фасады', tag: 'Дома' },
+      { src: '/img/facade-num8.jpg', title: 'Дом №8', tag: 'Дома' },
+      { src: '/img/yard-playground.jpg', title: 'Детские площадки', tag: 'Двор' },
+      { src: '/img/yard-benches.jpg', title: 'Зоны отдыха и скамейки', tag: 'Благоустройство' },
+      { src: '/img/courtyard-family.jpg', title: 'Двор без машин', tag: 'Двор' },
+      { src: '/img/greenery-autumn.jpg', title: 'Озеленение и деревья', tag: 'Озеленение' },
+      { src: '/img/medallion-sun.jpg', title: 'Фирменные медальоны', tag: 'Дома' },
+      { src: '/img/lobby-interior.jpg', title: 'Светлые входные группы', tag: 'Внутри' },
+      { src: '/img/street-towers.jpg', title: 'Улицы микрорайона', tag: 'Микрорайон' },
+      { src: '/img/towers-cluster.jpg', title: 'Панорама кварталов', tag: 'Микрорайон' },
+      { src: '/img/facade-closeup.jpg', title: 'Осень во дворе', tag: 'Двор' },
+    ],
+    badges: [
+      { label: 'Скидка', value: 'до 15%' },
+      { label: 'Очередь', value: '2-я' },
+      { label: 'Отделка', value: 'под ключ' },
+    ],
+  },
+  {
+    slug: 'naganova',
+    to: '/naganova',
+    name: 'Новая Наганова',
+    kind: 'Городской квартал',
+    status: 'Старт продаж',
+    tagline: 'Комфортная семейная среда в центре города',
+    description:
+      'Современный городской квартал, предлагающий комфортную семейную среду. В составе проекта — собственный двор-парк, коммерция на первых этажах и продуманные планировки для жизни большой семьи.',
+    highlights: [
+      'Лучшие условия на старте продаж',
+      'Двор-парк и места для прогулок',
+      'Коммерция и сервисы на первых этажах',
+      'Видовые квартиры с увеличенным остеклением',
+    ],
+    accent: 'brick',
+    image: '/img/render-naganova.jpg',
+    hero: '/img/nag-cluster.jpg',
+    shots: [
+      { src: '/img/render-nag-aerial.jpg', title: 'Вечерний вид квартала', tag: 'Рендер' },
+      { src: '/img/nag-render-day.jpg', title: 'Архитектура кварталов', tag: 'Рендер' },
+      { src: '/img/nag-street.jpg', title: 'Вечерние улицы', tag: 'Рендер' },
+      { src: '/img/nag-aerial-day.jpg', title: 'Генплан квартала', tag: 'Генплан' },
+      { src: '/img/nag-lowrise.jpg', title: 'Дворовые корпуса и среда', tag: 'Благоустройство' },
+      { src: '/img/nag-green.jpg', title: 'Озеленение двора', tag: 'Озеленение' },
+      { src: '/img/nag-tower.jpg', title: 'Видовые башни', tag: 'Дома' },
+      { src: '/img/nag-playground.jpg', title: 'Детские площадки', tag: 'Двор' },
+      { src: '/img/nag-construction.jpg', title: 'Ход строительства', tag: 'Ход строительства' },
+      { src: '/img/nag-moving.jpg', title: 'Новоселье в квартале', tag: 'Новоселье' },
+    ],
+    badges: [
+      { label: 'Старт', value: 'продаж' },
+      { label: 'Ипотека', value: 'от 6%' },
+      { label: 'Класс', value: 'комфорт+' },
+    ],
+  },
+]
+
+export type Promo = {
+  title: string
+  text: string
+  tag: string
+  to: string
+}
+
+export const promos: Promo[] = [
+  {
+    tag: 'Ипотека',
+    title: 'Семейная ипотека от 6%',
+    text: 'Подберём выгодные условия и рассчитаем платёж под ваш бюджет.',
+    to: '/mortgage',
+  },
+  {
+    tag: 'Trade-in',
+    title: 'Новая квартира за счёт старой',
+    text: 'Засчитаем вашу текущую недвижимость в счёт покупки новой.',
+    to: '/apartments',
+  },
+  {
+    tag: 'Старт продаж',
+    title: 'Самые выгодные условия',
+    text: 'Лучшие цены и планировки доступны на старте продаж «Новой Нагановой».',
+    to: '/naganova',
+  },
+  {
+    tag: 'Акция',
+    title: 'Скидки 15% на квартиры',
+    text: 'Успейте забронировать — количество акционных квартир ограничено.',
+    to: '/newlife',
+  },
+]
+
+export type Advantage = { title: string; text: string; icon: string }
+
+export const advantages: Advantage[] = [
+  {
+    icon: 'ShieldCheck',
+    title: 'Стабильный застройщик',
+    text: 'Работаем с 2007 года и сдаём дома в срок. Гарантийный сервис на каждый объект.',
+  },
+  {
+    icon: 'Trees',
+    title: 'Среда для жизни',
+    text: 'Дворы без машин, парки, детские и спортивные площадки — инфраструктура счастливой жизни.',
+  },
+  {
+    icon: 'KeyRound',
+    title: 'Квартиры с отделкой',
+    text: 'Заезжайте сразу: чистовая отделка, готовые санузлы и продуманные планировки.',
+  },
+  {
+    icon: 'Percent',
+    title: 'Выгодные программы',
+    text: 'Семейная ипотека от 6%, trade-in, рассрочка и акции на квартиры.',
+  },
+  {
+    icon: 'Building2',
+    title: 'Портфель проектов',
+    text: 'Жилые и коммерческие площади в Москве и МО, Ульяновске и Нижнем Новгороде.',
+  },
+  {
+    icon: 'HeartHandshake',
+    title: 'Сопровождение',
+    text: 'Поможем с подбором, ипотекой и оформлением — от заявки до получения ключей.',
+  },
+]
+
+export type NewsItem = { date: string; title: string; tag: string }
+
+export const news: NewsItem[] = [
+  {
+    date: '29 апреля 2026',
+    tag: 'Рейтинг',
+    title: '«Новая Жизнь» — в топ-5 застройщиков региона',
+  },
+  {
+    date: '11 февраля 2026',
+    tag: 'Старт',
+    title: 'Старт продаж дома №1 второй очереди в «Новой Жизни»',
+  },
+  {
+    date: '5 ноября 2025',
+    tag: 'Инфраструктура',
+    title: 'Новая детская поликлиника открылась в микрорайоне',
+  },
+  {
+    date: '17 октября 2025',
+    tag: 'Ипотека',
+    title: 'Падают не только листья, но и ставки: ипотека доступнее',
+  },
+]
+
+export type FAQ = { q: string; a: string }
+
+export const faqs: FAQ[] = [
+  {
+    q: 'Какие программы ипотеки доступны?',
+    a: 'Семейная ипотека от 6%, стандартные банковские программы, рассрочка от застройщика и trade-in. Менеджер подберёт оптимальный вариант под ваш бюджет.',
+  },
+  {
+    q: 'Квартиры сдаются с отделкой?',
+    a: 'Да, большинство квартир сдаётся с чистовой отделкой «под ключ» — можно заезжать сразу после получения ключей.',
+  },
+  {
+    q: 'Можно ли купить квартиру удалённо?',
+    a: 'Да. Мы проводим онлайн-показы, бронирование и сделку с электронной регистрацией — присутствие в офисе не обязательно.',
+  },
+  {
+    q: 'Что входит в концепцию «двор без машин»?',
+    a: 'Автомобили остаются на подземных и наземных паркингах по периметру, а внутренний двор отдан людям: прогулочные дорожки, детские и спортивные площадки, озеленение.',
+  },
+]
+
+export const galleryItems = [
+  { title: 'Фасады «Новой Жизни»', hue: 158 },
+  { title: 'Двор без машин', hue: 150 },
+  { title: 'Детские площадки', hue: 95 },
+  { title: 'Входные группы', hue: 205 },
+  { title: 'Видовые квартиры', hue: 175 },
+  { title: 'Парк и озеленение', hue: 130 },
+]
+
+export type GalleryCat = 'Дома' | 'Микрорайон' | 'Двор и среда' | 'Внутри'
+export type GalleryShot = { src: string; title: string; cat: GalleryCat; wide?: boolean }
+
+/** Реальные фотографии и рендеры микрорайонов «Новая Жизнь» и «Новая Наганова». */
+export const gallery: GalleryShot[] = [
+  { src: '/img/towers-twin.jpg', title: 'Высотные корпуса', cat: 'Дома' },
+  { src: '/img/towers-terracotta.jpg', title: 'Терракотовые кварталы', cat: 'Дома' },
+  { src: '/img/facade-orange.jpg', title: 'Тёплые фасады', cat: 'Дома' },
+  { src: '/img/towers-yellow.jpg', title: 'Высотные корпуса', cat: 'Дома' },
+  { src: '/img/facade-num8.jpg', title: 'Дом №8', cat: 'Дома' },
+  { src: '/img/facade-balconies.jpg', title: 'Остеклённые балконы', cat: 'Дома' },
+  { src: '/img/medallion-sun.jpg', title: 'Фирменные медальоны домов', cat: 'Дома' },
+  { src: '/img/facade-stripes.jpg', title: 'Цветные акценты фасадов', cat: 'Дома' },
+  { src: '/img/aerial-summer.jpg', title: 'Микрорайон с высоты', cat: 'Микрорайон', wide: true },
+  { src: '/img/complex-aerial.jpg', title: 'Генплан проекта', cat: 'Микрорайон', wide: true },
+  { src: '/img/street-towers.jpg', title: 'Улицы и кварталы', cat: 'Микрорайон' },
+  { src: '/img/towers-cluster.jpg', title: 'Панорама микрорайона', cat: 'Микрорайон' },
+  { src: '/img/yard-playground.jpg', title: 'Двор и детские площадки', cat: 'Двор и среда' },
+  { src: '/img/tower-tree.jpg', title: 'Корпуса в зелени', cat: 'Двор и среда' },
+  { src: '/img/facade-closeup.jpg', title: 'Осень в «Новой Жизни»', cat: 'Двор и среда' },
+  { src: '/img/tower-autumn.jpg', title: 'Дворы без машин', cat: 'Двор и среда' },
+  { src: '/img/lobby-interior.jpg', title: 'Светлые входные группы', cat: 'Внутри' },
+  { src: '/img/sign-newlife.jpg', title: 'Офис продаж «Новая Жизнь»', cat: 'Внутри' },
+]
+
+export type FloorPlan = { src: string; rooms: string; area: string }
+
+/** Реальные планировки квартир (с сайта застройщика). */
+export const floorplans: FloorPlan[] = [
+  { src: '/img/plans/plan1.jpg', rooms: 'Студия', area: '27,4 м²' },
+  { src: '/img/plans/plan11.jpg', rooms: '1-комнатная', area: '38,4 м²' },
+  { src: '/img/plans/plan3.jpg', rooms: '1-комнатная', area: '42,1 м²' },
+  { src: '/img/plans/plan8.jpg', rooms: '2-комнатная', area: '54,0 м²' },
+  { src: '/img/plans/plan7.jpg', rooms: '2-комнатная', area: '61,3 м²' },
+  { src: '/img/plans/plan4.jpg', rooms: '3-комнатная', area: '78,5 м²' },
+]
